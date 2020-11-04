@@ -72,6 +72,8 @@ SCSS per compilare il foglio di stile **index.css** viene usato node sass
 - **data_page** è il nome della pagina htm contentente i dati, di default viene presa dallo stesso nome del file HTML,
 - **setup_value** è la funzione di valorizzazione dati.
 
+L'invio del form deve essere disabilitato dal'HTML.
+
 	document.querySelector('#MyForm').addEventListener( 'submit', function(event) {
 		event.preventDefault();
 		send_data(this, data_page, setup_values );
@@ -104,4 +106,3 @@ SCSS per compilare il foglio di stile **index.css** viene usato node sass
 		}
 
 	</script>
-
