@@ -1,0 +1,22 @@
+{
+  "name": "slimline-webpages",
+  "version": "1.0.0",
+  "description": "Pagine web SlimLine",
+  "main": "index.js",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url src/sass/index.scss dist/scripts/css/index.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch",
+    "terser": "terser  src/js/*.js -o dist/scripts/js/index.js -c"
+  },
+  "author": "Gianluca Raftacco",
+  "license": "ISC",
+  "dependencies": {
+    "ionicons": "^5.2.3",
+    "terser": "^5.3.7"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.1",
+    "node-sass": "^4.14.1"
+  }
+}
