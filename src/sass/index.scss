@@ -26,6 +26,8 @@ $navbar-item-hover-color: white;
 $navbar-item-color: white;
 $navbar-item-hover-background-color: $green;
 
+$input-focus-border-color: $green;
+
 // Import only what you need from Bulma
 
 @import "../../node_modules/bulma/bulma.sass";
