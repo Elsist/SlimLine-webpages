@@ -16,6 +16,7 @@
 
 console.log("%c Welcome to SlimLine webpages ! ","color: #303030; font-family:monospace; background-color:#009933; font-size: 14px; font-weight:bold;");
 
+import notie from 'notie';
 // Inizializzazione variabili.
 
 export var data_page = window.location.pathname.split('/')[2].split(".")[0] + '.htm';
@@ -85,7 +86,7 @@ export function send_data( form_element, data_page, fct ) {
     for (i = 0; i < form_element.length ;i++) {
       data[form_element.elements[i].name] = form_element.elements[i].value;
     }
-    console.log(data);
+    console.log("data_page:" + data_page);
 
 
     const XHR = new XMLHttpRequest();
@@ -130,7 +131,7 @@ export function send_data( form_element, data_page, fct ) {
  * In caso si possa procedere chiama la funzione di valorizzazione variabili definita nella pagina,
  * che è stata passata per indirizzo su "fct_address" passando ad essa il corpo di della risposta.
  */
-function check_function( status, response, display_messages = false ) {
+function check_function( status, response, display_messages ) {
 
     // Se il codice di risposta è diverso da 4 allora non faccio nulla.
 
@@ -138,14 +139,29 @@ function check_function( status, response, display_messages = false ) {
 
     // Controllo semaforo.
 
-    semaforo = false;
+	semaforo = false;
+	
+	// Log
+
+	console.log(response);
 
     // Controllo presenza di errori
 
     var response = JSON.parse( response );
     if( response.hasOwnProperty('result') && display_messages ){
         alert( response.result );
-    }
+	}
+
+	if ( display_messages ){
+		// Salvataggio con successo
+		Swal.fire({
+			position: 'top-end',
+			icon: 'success',
+			title: 'Your setting has been saved',
+			showConfirmButton: false,
+			timer: 1000
+		})
+	}
 
     // Chiamo funzione.
 
