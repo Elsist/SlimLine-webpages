@@ -3,7 +3,7 @@
 /* Stili riguardanti le pagine da loggato */
 
 #main.columns{
-	@media screen and (min-device-width: 1023px) {
+	@media screen and (min-width: 1023px) {
 		margin-left: 200px;
 	}
 }
