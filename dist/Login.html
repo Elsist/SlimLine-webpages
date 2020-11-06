@@ -12,15 +12,69 @@
 	</head>
 	<body class="has-background-dark has-text-light">
 		<!-- sidebar end -->
-		<div id="login" class="columns is-gapless m-0">
+		<div id="login" class="columns is-vcentered m-0">
 			<!-- mainbar start -->
-				<div class="column is-full">
-				  First column
+				<div class="column is-4 is-offset-4">
+					<!-- start panel -->
+						<div class="has-text-centered is-size-1"><ion-icon name="person-circle" ></ion-icon></div>
+						<div class="has-text-centered is-size-3">Login</div>
+						<form id="loginform">
+							<div class="field">
+								<label class="label has-text-light has-text-centered mt-4">Username</label>
+								<div class="control">
+									<input name="Username" class="input" type="text" placeholder="name">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label has-text-light has-text-centered">Password</label>
+								<div class="control">
+									<input name="Password" class="input" type="password" placeholder="password">
+								</div>
+							</div>
+							<div class="buttons">
+								<button class="button is-primary is-fullwidth mt-5" name="Action" value="Login">Submit</button>
+							</div>
+						</form>
+					<!-- end panel -->
 				</div>
 			<!-- mainbar end -->
 		</div>
 		<script type="module">
-			// Login script
+		document.querySelector('#loginform').addEventListener( 'submit', function(event) {
+
+			event.preventDefault();
+
+			const XHR = new XMLHttpRequest();
+			var i;
+			let url = new URL("SysCgi/Login.cgi",document.location);
+
+			for (i = 0; i < this.length ;i++) {
+				url.searchParams.set( this.elements[i].name, this.elements[i].value);
+    		}
+
+			// Define what happens on successful data submission
+			XHR.addEventListener( 'load', function(event) {
+				if (XHR.readyState != 4) return;
+				//alert(XHR.responseText);
+				window.location.href = XHR.responseURL;
+
+			} );
+
+			// Define what happens in case of error
+			XHR.addEventListener( 'error', function(event) {
+				alert( 'Oops! Something went wrong.' );
+			} );
+
+			// Set up our request
+			XHR.open( 'GET', url );
+
+			// Add the required HTTP header for form data POST requests
+			XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded;charset=utf-8' );
+
+			// Finally, send our data.
+			XHR.send();
+
+		})
 		</script>
 	</body>
 </html>
