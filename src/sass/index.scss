@@ -1,8 +1,9 @@
 @charset "utf-8";
 
-// Set your brand colors
+// Sovrascrizioni BULMA
 
 $green: #009933;
+$red: #c0392b;
 $dark: #303030;
 $grey-dark: #303030;
 $grey: #494949;
@@ -13,34 +14,34 @@ $primary: $green;
 
 $body-background-color: #f6f6f6;
 
-// Update some of Bulma's component variables
-
 $control-border-width: 2px;
 
 $navbar-background-color: $green;
-$menu-item-hover-background-color: $grey;
-$menu-item-active-background-color: $grey;
 $navbar-dropdown-item-active-color: white;
 $navbar-dropdown-arrow: white;
 $navbar-item-hover-color: white;
 $navbar-item-color: white;
 $navbar-item-hover-background-color: $green;
 
+$menu-item-hover-background-color: $grey;
+$menu-item-active-background-color: $grey;
+
 $input-focus-border-color: $green;
+
+// Sovrascrizioni Notie
+
+$notie-color-success: $green;
+$notie-color-error: $red;
+$notie-font-size-desktop: 1.2rem;
+$notie-font-size-widescreen: 1.2rem;
 
 // Import only what you need from Bulma
 
 @import "../../node_modules/bulma/bulma.sass";
 
-//@import "../../node_modules/bulma/sass/utilities/_all.sass";
-//@import "../../node_modules/bulma/sass/base/_all.sass";
-//@import "../../node_modules/bulma/sass/elements/button.sass";
-//@import "../../node_modules/bulma/sass/elements/container.sass";
-//@import "../../node_modules/bulma/sass/elements/title.sass";
-//@import "../../node_modules/bulma/sass/form/_all.sass";
-//@import "../../node_modules/bulma/sass/components/navbar.sass";
-//@import "../../node_modules/bulma/sass/layout/hero.sass";
-//@import "../../node_modules/bulma/sass/layout/section.sass";
+// Import only what you need from Notie
+
+@import '../../node_modules/notie/src/notie';
 
 // Import custom styles
 
