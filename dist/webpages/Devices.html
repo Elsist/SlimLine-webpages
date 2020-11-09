@@ -5,12 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SlimLine Webpages</title>
-		<link rel="stylesheet" href="../scripts/css/index.css">
-		<!-- temp -->
-		<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-		<!-- temp -->
-	</head>
+		<link rel="stylesheet" href="../scripts/css/bundle.css">
+		</head>
 	<body class="has-navbar-fixed-top">
 		<!-- navbar start -->
 		<nav class="navbar is-fixed-top has-background-primary" role="navigation" aria-label="main navigation">
@@ -559,55 +555,6 @@
 			</div>
 			<!-- mainbar end -->
 		</div>
-		<script type="module">
-
-			// Importazioni.
-
-			import { read_data, send_data, data_page } from '../scripts/js/index.js';
-
-			read_data( data_page, setup_values );
-	
-			// Funzione di settaggio variabili
-		
-			document.querySelector('#com0').addEventListener( 'submit', function(event) {
-				event.preventDefault();
-				send_data(this, data_page, setup_values );
-			})
-			document.querySelector('#com1').addEventListener( 'submit', function(event) {
-				event.preventDefault();
-				send_data(this, data_page, setup_values );
-			})
-			document.querySelector('#com2').addEventListener( 'submit', function(event) {
-				event.preventDefault();
-				send_data(this, data_page, setup_values );
-			})
-
-			// Funzione di visualizzazione variabili.
-
-			function setup_values( response ) {
-				document.getElementById( "OSID_COM0_BAUD" ).value = response.OSID_COM0_BAUD;
-				document.getElementById( "OSID_COM0_PARITY" ).value = response.OSID_COM0_PARITY;
-				document.getElementById( "OSID_COM0_DATA_BITS" ).value = response.OSID_COM0_DATA_BITS;
-				document.getElementById( "OSID_COM0_STOP_BITS" ).value = response.OSID_COM0_STOP_BITS;
-				document.getElementById( "OSID_COM0_DTR_MNG" ).value = response.OSID_COM0_DTR_MNG;
-				document.getElementById( "OSID_COM0_DTR_ON_TIME" ).value = response.OSID_COM0_DTR_ON_TIME;
-				document.getElementById( "OSID_COM0_DTR_OFF_TIME" ).value = response.OSID_COM0_DTR_OFF_TIME;
-				document.getElementById( "OSID_COM1_BAUD" ).value = response.OSID_COM1_BAUD;
-				document.getElementById( "OSID_COM1_PARITY" ).value = response.OSID_COM1_PARITY;
-				document.getElementById( "OSID_COM1_DATA_BITS" ).value = response.OSID_COM1_DATA_BITS;
-				document.getElementById( "OSID_COM1_STOP_BITS" ).value = response.OSID_COM1_STOP_BITS;
-				document.getElementById( "OSID_COM1_DTR_MNG" ).value = response.OSID_COM1_DTR_MNG;
-				document.getElementById( "OSID_COM1_DTR_ON_TIME" ).value = response.OSID_COM1_DTR_ON_TIME;
-				document.getElementById( "OSID_COM1_DTR_OFF_TIME" ).value = response.OSID_COM1_DTR_OFF_TIME;
-				document.getElementById( "OSID_COM2_BAUD" ).value = response.OSID_COM2_BAUD;
-				document.getElementById( "OSID_COM2_PARITY" ).value = response.OSID_COM2_PARITY;
-				document.getElementById( "OSID_COM2_DATA_BITS" ).value = response.OSID_COM2_DATA_BITS;
-				document.getElementById( "OSID_COM2_STOP_BITS" ).value = response.OSID_COM2_STOP_BITS;
-				document.getElementById( "OSID_COM2_DTR_MNG" ).value = response.OSID_COM2_DTR_MNG;
-				document.getElementById( "OSID_COM2_DTR_ON_TIME" ).value = response.OSID_COM2_DTR_ON_TIME;
-				document.getElementById( "OSID_COM2_DTR_OFF_TIME" ).value = response.OSID_COM2_DTR_OFF_TIME;
-			}
-
-		</script>
+		<script type="module" src="../scripts/js/bundle.js"></script>
 	</body>
 </html>
