@@ -12,11 +12,14 @@
  * operazione terminata e per gestire stringa di risposta ricevuta dal server.
  */
 
+// Importazioni
+
+import notie from '../../node_modules/notie';
+
 // Messaggio di benvenuto.
 
 console.log("%c Welcome to SlimLine webpages ! ","color: #303030; font-family:monospace; background-color:#009933; font-size: 14px; font-weight:bold;");
 
-import notie from 'notie';
 // Inizializzazione variabili.
 
 export var data_page = window.location.pathname.split('/')[2].split(".")[0] + '.htm';
@@ -84,10 +87,11 @@ export function send_data( form_element, data_page, fct ) {
     
     var i;
     for (i = 0; i < form_element.length ;i++) {
-      data[form_element.elements[i].name] = form_element.elements[i].value;
+		if ( form_element.elements[i].type == "submit" ) continue; // Escludo il botton dalle variabili inviate nel form.
+    	data[form_element.elements[i].name] = form_element.elements[i].value;
     }
-    console.log("data_page:" + data_page);
-
+	
+	console.log("data_page:" + data_page);
 
     const XHR = new XMLHttpRequest();
 
@@ -99,6 +103,8 @@ export function send_data( form_element, data_page, fct ) {
     for( name in data ) {
         urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
     }
+
+	console.log(data);
 
     // Combine the pairs into a single string and replace all %-encoded spaces to 
     // the '+' character; matches the behaviour of browser form submissions.
@@ -140,27 +146,22 @@ function check_function( status, response, display_messages ) {
     // Controllo semaforo.
 
 	semaforo = false;
-	
+
+	var response = JSON.parse( response );
+
 	// Log
 
 	console.log(response);
 
-    // Controllo presenza di errori
+	// Controllo presenza di errori
 
-    var response = JSON.parse( response );
-    if( response.hasOwnProperty('result') && display_messages ){
-        alert( response.result );
-	}
-
-	if ( display_messages ){
-		// Salvataggio con successo
-		Swal.fire({
-			position: 'top-end',
-			icon: 'success',
-			title: 'Your setting has been saved',
-			showConfirmButton: false,
-			timer: 1000
-		})
+    if( response.hasOwnProperty('WEBID_ERROR') && display_messages ){
+		if ( response.WEBID_ERROR != 0 ) {
+			notie.alert({ type: 'error', text: 'Error #' + response.WEBID_ERROR, position: 'bottom' });
+		}
+		else {
+			notie.alert({ type: 'success', text: 'Ok.', position: 'bottom' });
+		}
 	}
 
     // Chiamo funzione.
