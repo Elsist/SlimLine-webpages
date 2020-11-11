@@ -4,7 +4,7 @@
 
 #main.columns{
 	@media screen and (min-width: 1023px) {
-		margin-left: 200px;
+		margin-left: 188px; // 200 - 12 (pixel di padding di default sulle colonne)
 	}
 }
 
@@ -21,10 +21,32 @@
 	aside{
 		width: 100%;
 	}
+
+	/* Stile icona outline */
+
+	ion-icon {
+		--ionicon-stroke-width: 50px;
+	}
+
+	/* Icona colorata su menu attivo */
+	a.is-active ion-icon {
+		color: #009933;
+	}
 }
 
 /* Stili riguardanti login */
 
 #login.columns{
 	height: 100vh;
+
+	input.input{
+		background-color: #3f3f3f;
+		//border: 2px solid #303030;
+	}
+}
+
+/* Stile freccia select di bulma */
+
+.select:after {
+	border-color: #303030 !important;
 }
