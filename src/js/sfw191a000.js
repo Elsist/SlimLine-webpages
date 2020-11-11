@@ -84,7 +84,8 @@ export function send_data( form_element, data_page, fct ) {
 
     fct_address = fct;
 
-    // Var data.
+	// Var data.
+
     var data = {};
 
     // Loop per tutti gli oggetti del form.
@@ -108,7 +109,10 @@ export function send_data( form_element, data_page, fct ) {
         urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
     }
 
-	console.log(data);
+	// Log.
+
+	console.log("Data send:");
+	console.log(urlEncodedDataPairs);
 
     // Combine the pairs into a single string and replace all %-encoded spaces to 
     // the '+' character; matches the behaviour of browser form submissions.
@@ -116,7 +120,6 @@ export function send_data( form_element, data_page, fct ) {
 
     // Define what happens on successful data submission
     XHR.addEventListener( 'load', function(event) {
-		console.log(XHR.status);
         check_function( XHR.readyState, XHR.responseText, true );
     } );
 
@@ -161,6 +164,7 @@ function check_function( status, response, display_messages ) {
 
 	// Log
 
+	console.log("Data received:");
 	console.log(response);
 
 	// Controllo presenza di errori
@@ -200,6 +204,5 @@ function try_json( json_string ) {
         }
     }
     catch (e) { }
-
     return false;
 };
