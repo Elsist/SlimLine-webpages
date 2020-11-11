@@ -32,8 +32,8 @@ var semaforo; // Variabile semaforica.
  * Questa funzione invia la richiesta AJAX al server. Viene richiesta la pagina
  * definita in "Page".
  *
- * @param string page_data pagina sulla quale inviare le richieste (.htm).
- * @param function fct nome della funzione da eseguire al callback.
+ * @param string page_data pagina sulla quale inviare le richieste.
+ * @param function fct indirizzo della funzione da eseguire al callback.
  */
 export function read_data( page_data, fct ) {
     
@@ -75,6 +75,10 @@ export function read_data( page_data, fct ) {
  * Funzione di invio dati del form, questa funzione prende in input dove mandare il form,
  * ovvero la pagina valori (.htm) e l'oggetto dom del form. da questo oggetto,
  * la funzione stessa potrà accedere a tutti gli input del form e leggerne i valori per costruire il corpo del POST.
+ * 
+ * @param obj form_element oggetto connesso al dom html del form.
+ * @param string data_page nome della pagina alla quale mandare il form
+ * @param addr fct indirizzo della funzione di chiamare su callback delle risposta.
  */
 export function send_data( form_element, data_page, fct ) {
 
@@ -112,6 +116,7 @@ export function send_data( form_element, data_page, fct ) {
 
     // Define what happens on successful data submission
     XHR.addEventListener( 'load', function(event) {
+		console.log(XHR.status);
         check_function( XHR.readyState, XHR.responseText, true );
     } );
 
@@ -136,6 +141,10 @@ export function send_data( form_element, data_page, fct ) {
  * Funzione che esegue controlli basilari sullo stato di risposta e semaforo.
  * In caso si possa procedere chiama la funzione di valorizzazione variabili definita nella pagina,
  * che è stata passata per indirizzo su "fct_address" passando ad essa il corpo di della risposta.
+ * 
+ * @param int status codice di risposta.
+ * @param string response stringa di risposta.
+ * @param bool display_messages varabile booleana che mi indica se stampare i messaggi o meno.
  */
 function check_function( status, response, display_messages ) {
 
@@ -147,7 +156,8 @@ function check_function( status, response, display_messages ) {
 
 	semaforo = false;
 
-	var response = JSON.parse( response );
+	var response = try_json( response );
+	if (!response) location.reload();
 
 	// Log
 
@@ -157,10 +167,10 @@ function check_function( status, response, display_messages ) {
 
     if( response.hasOwnProperty('WEBID_ERROR') && display_messages ){
 		if ( response.WEBID_ERROR != 0 ) {
-			notie.alert({ type: 'error', text: 'Error #' + response.WEBID_ERROR, position: 'bottom' });
+			notie.alert({ type: 'error', text: 'Error #' + response.WEBID_ERROR, position: 'top' });
 		}
 		else {
-			notie.alert({ type: 'success', text: 'Ok.', position: 'bottom' });
+			notie.alert({ type: 'success', text: 'Setting saved.', position: 'top' });
 		}
 	}
 
@@ -168,3 +178,28 @@ function check_function( status, response, display_messages ) {
 
     fct_address( response );
 }
+
+/**
+ * Funzione try_json( json_string )
+ * 
+ * Funzione che controlla la validità del json. Ritorna il JSON parsato se è valido,
+ * false altrimenti.
+ * 
+ * @param string json_string string json da controllare.
+ */
+function try_json( json_string ) {
+    try {
+        var o = JSON.parse(json_string);
+
+        // Handle non-exception-throwing cases:
+        // Neither JSON.parse(false) or JSON.parse(1234) throw errors, hence the type-checking,
+        // but... JSON.parse(null) returns null, and typeof null === "object", 
+        // so we must check for that, too. Thankfully, null is falsey, so this suffices:
+        if (o && typeof o === "object") {
+            return o;
+        }
+    }
+    catch (e) { }
+
+    return false;
+};
