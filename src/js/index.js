@@ -9,13 +9,18 @@ import '../sass/index.scss';
  */
 
 import { read_data, send_data, data_page } from './sfw191a000';
-import { Ionicons } from '../../node_modules/ionicons';
-import { menu_active, nav_burger } from './utils';
+import * as icons from '../../node_modules/ionicons';
+import { menu_active, nav_burger, open_modal } from './utils';
 
 // Set voce attiva nel menu e burger per dropdown.
 
 menu_active();
 document.addEventListener('DOMContentLoaded', nav_burger() );
+
+// Action per aprire accordion. 
+
+document.querySelectorAll("[data-toggle='modal']").forEach( function( elem ) { elem.addEventListener("click", function(event){event.preventDefault();open_modal( elem.dataset.target )} ); });
+
 
 // Check pagina e chiamata alla propria funzione.
 
@@ -35,7 +40,7 @@ function device_page(){
 	document.querySelector('#com0').addEventListener( 'submit', function(event) {
 		event.preventDefault();
 		send_data(this, data_page, setup_values );
-	})
+	})/*
 	document.querySelector('#com1').addEventListener( 'submit', function(event) {
 		event.preventDefault();
 		send_data(this, data_page, setup_values );
@@ -43,7 +48,7 @@ function device_page(){
 	document.querySelector('#com2').addEventListener( 'submit', function(event) {
 		event.preventDefault();
 		send_data(this, data_page, setup_values );
-	})
+	})*/
 
 	// Funzione di visualizzazione variabili.
 
@@ -71,3 +76,6 @@ function device_page(){
 		document.getElementById( "OSID_COM2_DTR_OFF_TIME" ).value = response.OSID_COM2_DTR_OFF_TIME;
 	}
 }
+
+
+
