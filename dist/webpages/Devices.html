@@ -54,10 +54,10 @@
 		<div class="has-background-dark navbar-menu is-hidden-touch els-sidebar">
 			<aside class="menu pt-4 pb-4 has-text-weight-bold" >
 				<ul class="menu-list sidebar-menu" id="nav">
-				<li><a href="Index.html" class="has-text-grey-light"> <ion-icon name="home-outline" size="" class="pr-4 is-size-5"></ion-icon> <span>Dashboard</span></a></li>
-				<li><a href="General.html" class="has-text-grey-light"> <ion-icon name="build-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>General</span></a></li>
-				<li><a href="Devices.html" class="has-text-grey-light"> <ion-icon name="bulb-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Devices</span></a></li>
-				<li><a href="Securety.html" class="has-text-grey-light"> <ion-icon name="shield-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Securety</span></a></li>
+				<li><a href="Index.html" class="has-text-grey"> <ion-icon name="home-outline" size="" class="pr-4 is-size-5"></ion-icon> <span>Dashboard</span></a></li>
+				<li><a href="General.html" class="has-text-grey"> <ion-icon name="build-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>General</span></a></li>
+				<li><a href="Devices.html" class="has-text-grey"> <ion-icon name="bulb-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Devices</span></a></li>
+				<li><a href="Securety.html" class="has-text-grey"> <ion-icon name="shield-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Securety</span></a></li>
 				</ul>
 			</aside>
 		</div>
@@ -74,13 +74,13 @@
 						<span class="tag is-success is-light has-text-weight-semibold">ON</span>
 					</div>
 					<div class="column">
-						BAUD RATES: <span class="has-text-weight-semibold">55</span>,
-						PARITY BITS: <span class="has-text-weight-semibold">E</span>,
-						DATA BITS: <span class="has-text-weight-semibold">8</span>,
-						STOP BITS: <span class="has-text-weight-semibold">1</span>
+						BAUD RATES: <span id="OSID_COM0_BAUD_view" class="has-text-weight-semibold">55</span>,
+						PARITY BITS: <span id="OSID_COM0_PARITY_view" class="has-text-weight-semibold">E</span>,
+						DATA BITS: <span id="OSID_COM0_DATA_BITS_view" class="has-text-weight-semibold">8</span>,
+						STOP BITS: <span id="OSID_COM0_STOP_BITS_view" class="has-text-weight-semibold">1</span>
 					</div>
 					<div class="column has-text-right-tablet">
-						<a data-toggle="modal" data-target="modal-com0"><ion-icon name="settings-outline" class="has-text-grey is-size-3"></ion-icon></a>
+						<a data-toggle="modal" data-target="modal-COM0"><ion-icon name="settings-outline" size="large" class="has-text-grey-dark"></ion-icon></a>
 					</div>
 				</div>
 				<!-- end device -->
@@ -93,13 +93,13 @@
 						<span class="tag is-success is-light has-text-weight-semibold">ON</span>
 					</div>
 					<div class="column">
-						BAUD RATES: <span class="has-text-weight-semibold">55</span>,
-						PARITY BITS: <span class="has-text-weight-semibold">E</span>,
-						DATA BITS: <span class="has-text-weight-semibold">8</span>,
-						STOP BITS: <span class="has-text-weight-semibold">1</span>
+						BAUD RATES: <span id="OSID_COM1_BAUD_view" class="has-text-weight-semibold">55</span>,
+						PARITY BITS: <span id="OSID_COM1_PARITY_view" class="has-text-weight-semibold">E</span>,
+						DATA BITS: <span id="OSID_COM1_DATA_BITS_view" class="has-text-weight-semibold">8</span>,
+						STOP BITS: <span id="OSID_COM1_STOP_BITS_view" class="has-text-weight-semibold">1</span>
 					</div>
 					<div class="column has-text-right-tablet">
-						<a><ion-icon name="settings-outline" size="large" class=" has-text-grey"></ion-icon></a>
+						<a data-toggle="modal" data-target="modal-COM1"><ion-icon name="settings-outline" size="large" class="has-text-grey-dark"></ion-icon></a>
 					</div>
 				</div>
 				<!-- end device -->
@@ -112,14 +112,14 @@
 						<span class="tag is-success is-light has-text-weight-semibold">ON</span>
 					</div>
 					<div class="column">
-						BAUD RATES: <span class="has-text-weight-semibold">55</span>,
-						PARITY BITS: <span class="has-text-weight-semibold">E</span>,
-						DATA BITS: <span class="has-text-weight-semibold">8</span>,
-						STOP BITS: <span class="has-text-weight-semibold">1</span>
+						BAUD RATES: <span id="OSID_COM2_BAUD_view" class="has-text-weight-semibold">55</span>,
+						PARITY BITS: <span id="OSID_COM2_PARITY_view" class="has-text-weight-semibold">E</span>,
+						DATA BITS: <span id="OSID_COM2_DATA_BITS_view" class="has-text-weight-semibold">8</span>,
+						STOP BITS: <span id="OSID_COM2_STOP_BITS_view" class="has-text-weight-semibold">1</span>
 					</div>
 					<div class="column has-text-right-tablet">
-						<a>
-							<ion-icon name="settings-outline" size="large" class="has-text-grey"></ion-icon>
+						<a data-toggle="modal" data-target="modal-COM2">
+							<ion-icon name="settings-outline" size="large" class="has-text-grey-dark"></ion-icon>
 						</a>
 					</div>
 				</div>
@@ -133,27 +133,28 @@
 						<span class="tag is-success is-light has-text-weight-semibold">ON</span>
 					</div>
 					<div class="column">
-						IP: <span class="has-text-weight-semibold">55</span>,
-						MASK: <span class="has-text-weight-semibold">E</span>,
-						GATEWAY: <span class="has-text-weight-semibold">8</span>,
-						DNS PRIMARY: <span class="has-text-weight-semibold">1</span>,
-						DNS SECONDARY: <span class="has-text-weight-semibold">1</span>,
+						IP: <span id="OSID_ETH0_ACT_IP_view" class="has-text-weight-semibold">55</span>,
+						MAC: <span id="OSID_ETH0_MAC" class="has-text-weight-semibold">55</span>,
+						MASK: <span id="OSID_ETH0_ACT_MASK_view" class="has-text-weight-semibold">E</span>,
+						GATEWAY: <span id="OSID_ETH0_ACT_GATEWAY_view"class="has-text-weight-semibold">8</span>,
+						DNS PRIMARY: <span id="OSID_ETH0_ACT_DNS_PRIMARY_view" class="has-text-weight-semibold">1</span>,
+						DNS SECONDARY: <span id="OSID_ETH0_ACT_DNS_SECONDARY_view" class="has-text-weight-semibold">1</span>,
 					</div>
 					<div class="column has-text-right-tablet">
-						<a>
-							<ion-icon name="settings-outline" size="large" class="has-text-grey"></ion-icon>
+						<a data-toggle="modal" data-target="modal-ETH0">
+							<ion-icon name="settings-outline" size="large" class="has-text-grey-dark"></ion-icon>
 						</a>
 					</div>
 				</div>
 				<!-- end device -->
 				<!-- start modals -->
-				<!-- modal com0 start -->
-				<div class="modal" id="modal-com0">
-					<form id="com0">
+				<!-- modal COM0 start -->
+				<div class="modal" id="modal-COM0">
+					<form id="COM0">
 						<div class="modal-background"></div>
 						<div class="modal-card">
 							<header class="modal-card-head">
-								<ion-icon name="settings-outline" class="is-size-3 mr-4"></ion-icon> <p class="modal-card-title has-text-weight-bold">COM0 Settings</p>
+								<ion-icon name="settings-outline" class="is-size-3 mr-4 has-text-success"></ion-icon> <p class="modal-card-title has-text-weight-bold">COM0 Settings</p>
 							</header>
 							<section class="modal-card-body">
 								<div class="content">
@@ -166,7 +167,7 @@
 											<div class="field">
 												<div class="control">
 													<div class="select is-fullwidth">
-														<select id="OSID_COM0_BAUD" name="OSID_COM0_BAUD">
+														<select id="OSID_COM0_BAUD_input" name="OSID_COM0_BAUD">
 															<option>300</option>
 															<option>600</option>
 															<option>1600</option>
@@ -194,7 +195,7 @@
 											<div class="field">
 												<div class="control">
 													<div class="select is-fullwidth">
-														<select id="OSID_COM0_PARITY" name="OSID_COM0_PARITY">
+														<select id="OSID_COM0_PARITY_input" name="OSID_COM0_PARITY">
 															<option>E</option>
 															<option>N</option>
 															<option>O</option>
@@ -214,7 +215,7 @@
 											<div class="field">
 												<div class="control">
 													<div class="select is-fullwidth">
-														<select id="OSID_COM0_DATA_BITS" name="OSID_COM0_DATA_BITS">
+														<select id="OSID_COM0_DATA_BITS_input" name="OSID_COM0_DATA_BITS">
 															<option value="7">7 bits</option>
 															<option value="8">8 bits</option>
 														</select>
@@ -233,7 +234,7 @@
 											<div class="field">
 												<div class="control">
 													<div class="select is-fullwidth">
-														<select id="OSID_COM0_STOP_BITS" name="OSID_COM0_STOP_BITS">
+														<select id="OSID_COM0_STOP_BITS_input" name="OSID_COM0_STOP_BITS">
 															<option value="1">1 bit</option>
 															<option value="2">2 bits</option>
 														</select>
@@ -252,7 +253,7 @@
 											<div class="field">
 												<div class="control">
 													<div class="select is-fullwidth">
-														<select id="OSID_COM0_DTR_MNG" name="OSID_COM0_DTR_MNG">
+														<select id="OSID_COM0_DTR_MNG_input" name="OSID_COM0_DTR_MNG">
 															<option value="0">Off</option>
 															<option value="1">On</option>
 															<option value="2">Auto</option>
@@ -272,7 +273,7 @@
 										<div class="field-body">
 											<div class="field">
 												<div class="control">
-													<input id="OSID_COM0_DTR_ON_TIME" name="OSID_COM0_DTR_ON_TIME" class="input"
+													<input id="OSID_COM0_DTR_ON_TIME_input" name="OSID_COM0_DTR_ON_TIME" class="input"
 														type="text" placeholder="Normal sized input">
 												</div>
 											</div>
@@ -287,7 +288,7 @@
 										<div class="field-body">
 											<div class="field">
 												<div class="control">
-													<input id="OSID_COM0_DTR_OFF_TIME" name="OSID_COM0_DTR_OFF_TIME" class="input"
+													<input id="OSID_COM0_DTR_OFF_TIME_input" name="OSID_COM0_DTR_OFF_TIME" class="input"
 														type="text" placeholder="Normal sized input">
 												</div>
 											</div>
@@ -303,7 +304,448 @@
 						</div>
 					</form>
 				</div>
-				<!-- modal com0 end -->				
+				<!-- modal COM0 end -->
+				<!-- modal COM1 start -->
+				<div class="modal" id="modal-COM1">
+					<form id="COM1">
+						<div class="modal-background"></div>
+						<div class="modal-card">
+							<header class="modal-card-head">
+								<ion-icon name="settings-outline" class="is-size-3 mr-4"></ion-icon> <p class="modal-card-title has-text-weight-bold">COM1 Settings</p>
+							</header>
+							<section class="modal-card-body">
+								<div class="content">
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6"> Baud</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM1_BAUD_input" name="OSID_COM1_BAUD">
+															<option>300</option>
+															<option>600</option>
+															<option>1600</option>
+															<option>2400</option>
+															<option>4800</option>
+															<option>9600</option>
+															<option>19200</option>
+															<option>38400</option>
+															<option>57600</option>
+															<option>76800</option>
+															<option>115200</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">Parity</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM1_PARITY_input" name="OSID_COM1_PARITY">
+															<option>E</option>
+															<option>N</option>
+															<option>O</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">Data</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM1_DATA_BITS_input" name="OSID_COM1_DATA_BITS">
+															<option value="7">7 bits</option>
+															<option value="8">8 bits</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">Stop</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM1_STOP_BITS_input" name="OSID_COM1_STOP_BITS">
+															<option value="1">1 bit</option>
+															<option value="2">2 bits</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DTR</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM1_DTR_MNG_input" name="OSID_COM1_DTR_MNG">
+															<option value="0">Off</option>
+															<option value="1">On</option>
+															<option value="2">Auto</option>
+															<option value="3">Timed</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DTROn</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_COM1_DTR_ON_TIME_input" name="OSID_COM1_DTR_ON_TIME" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DTROff</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_COM1_DTR_OFF_TIME_input" name="OSID_COM1_DTR_OFF_TIME" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+								</div>
+							</section>
+							<footer class="modal-card-foot">
+								<button type="submit" class="button is-success is-fullwidth has-text-weight-bold">Save</button>
+								<a class="button is-danger is-fullwidth modal-close-button has-text-weight-bold">Close</a>
+							</footer>
+						</div>
+					</form>
+				</div>
+				<!-- modal COM1 end -->
+				<!-- modal COM2 start -->
+				<div class="modal" id="modal-COM2">
+					<form id="COM2">
+						<div class="modal-background"></div>
+						<div class="modal-card">
+							<header class="modal-card-head">
+								<ion-icon name="settings-outline" class="is-size-3 mr-4"></ion-icon> <p class="modal-card-title has-text-weight-bold">COM2 Settings</p>
+							</header>
+							<section class="modal-card-body">
+								<div class="content">
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6"> Baud</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM2_BAUD_input" name="OSID_COM2_BAUD">
+															<option>300</option>
+															<option>600</option>
+															<option>1600</option>
+															<option>2400</option>
+															<option>4800</option>
+															<option>9600</option>
+															<option>19200</option>
+															<option>38400</option>
+															<option>57600</option>
+															<option>76800</option>
+															<option>115200</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">Parity</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM2_PARITY_input" name="OSID_COM2_PARITY">
+															<option>E</option>
+															<option>N</option>
+															<option>O</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">Data</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM2_DATA_BITS_input" name="OSID_COM2_DATA_BITS">
+															<option value="7">7 bits</option>
+															<option value="8">8 bits</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">Stop</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM2_STOP_BITS_input" name="OSID_COM2_STOP_BITS">
+															<option value="1">1 bit</option>
+															<option value="2">2 bits</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DTR</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<div class="select is-fullwidth">
+														<select id="OSID_COM2_DTR_MNG_input" name="OSID_COM2_DTR_MNG">
+															<option value="0">Off</option>
+															<option value="1">On</option>
+															<option value="2">Auto</option>
+															<option value="3">Timed</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DTROn</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_COM2_DTR_ON_TIME_input" name="OSID_COM2_DTR_ON_TIME" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DTROff</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_COM2_DTR_OFF_TIME_input" name="OSID_COM2_DTR_OFF_TIME" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+								</div>
+							</section>
+							<footer class="modal-card-foot">
+								<button type="submit" class="button is-success is-fullwidth has-text-weight-bold">Save</button>
+								<a class="button is-danger is-fullwidth modal-close-button has-text-weight-bold">Close</a>
+							</footer>
+						</div>
+					</form>
+				</div>
+				<!-- modal COM2 end -->
+				<!-- modal ETH0 start -->
+				<div class="modal" id="modal-ETH0">
+					<form id="ETH0">
+						<div class="modal-background"></div>
+						<div class="modal-card">
+							<header class="modal-card-head">
+								<ion-icon name="settings-outline" class="is-size-3 mr-4"></ion-icon> <p class="modal-card-title has-text-weight-bold">ETH0 Settings</p>
+							</header>
+							<section class="modal-card-body">
+								<div class="content">
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label">
+											<label class="label has-text-weight-normal is-size-6">DHCP</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+											<div class="control">
+												<label class="checkbox">
+												<input id="OSID_ETH0_DHCP_EN_input" name="OSID_ETH0_DHCP_EN" type="checkbox" value="1">
+												</label>
+											</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">IP</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_ETH0_ACT_IP_input" name="OSID_ETH0_ACT_IP" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">MASK</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_ETH0_ACT_MASK_input" name="OSID_ETH0_ACT_MASK" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">GATEWAY</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_ETH0_ACT_GATEWAY_input" name="OSID_ETH0_ACT_GATEWAY" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label">
+											<label class="label has-text-weight-normal">DNSafromaDHCP</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+											<div class="control">
+												<label class="checkbox">
+												<input id="OSID_ETH0_ACT_DHCP_DNS_input" name="OSID_ETH0_ACT_DHCP_DNS" type="checkbox">
+												</label>
+											</div>
+											</div>
+										</div>
+										</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DNS primary</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_ETH0_ACT_DNS_PRIMARY_input" name="OSID_ETH0_ACT_DNS_PRIMARY" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+									<!-- start field -->
+									<div class="field is-horizontal">
+										<div class="field-label is-normal">
+											<label class="label has-text-weight-normal is-size-6">DNS&nbsp;secondary</label>
+										</div>
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<input id="OSID_ETH0_ACT_DNS_SECONDARY_input" name="OSID_ETH0_ACT_DNS_SECONDARY" class="input"
+														type="text" placeholder="Normal sized input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end field -->
+								</div>
+							</section>
+							<footer class="modal-card-foot">
+								<button type="submit" class="button is-success is-fullwidth has-text-weight-bold">Save</button>
+								<a class="button is-danger is-fullwidth modal-close-button has-text-weight-bold">Close</a>
+							</footer>
+						</div>
+					</form>
+				</div>
+				<!-- modal ETH0 end -->																								
 				<!-- end modals -->
 			</div>
 			<!-- mainbar end -->
