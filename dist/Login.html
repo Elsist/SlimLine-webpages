@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SlimLine Webpages</title>
-		<link rel="stylesheet" href="scripts/css/index.css">
+		<link rel="stylesheet" href="scripts/css/bundle.css">
 		<!-- temp -->
 		<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
 		<!-- temp -->
@@ -17,20 +17,10 @@
 				<div class="column is-4 is-offset-4">
 					<!-- start panel -->
 						<div class="has-text-centered is-size-1"><ion-icon name="person-circle" ></ion-icon></div>
-						<div class="has-text-centered is-size-3">Login</div>
+						<div class="has-text-centered is-size-3 mb-4 has-text-weight-bold">Login</div>
 						<form id="loginform">
-							<div class="field">
-								<label class="label has-text-light has-text-centered mt-4">Username</label>
-								<div class="control">
-									<input name="Username" class="input" type="text" placeholder="name">
-								</div>
-							</div>
-							<div class="field">
-								<label class="label has-text-light has-text-centered">Password</label>
-								<div class="control">
-									<input name="Password" class="input" type="password" placeholder="password">
-								</div>
-							</div>
+							<input name="Username" class="input" type="text" placeholder="name" style="border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;">
+							<input name="Password" class="input" type="password" placeholder="password" style="border-top-right-radius: 0px;border-top-left-radius: 0px;">
 							<div class="buttons">
 								<button class="button is-primary is-fullwidth mt-5" name="Action" value="Login">Submit</button>
 							</div>
