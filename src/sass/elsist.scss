@@ -40,13 +40,26 @@
 	height: 100vh;
 
 	input.input{
-		background-color: #3f3f3f;
-		//border: 2px solid #303030;
+		background-color: $grey;
+		color: #fff;
+		border: 2px solid $grey-dark;
+		  
+		@include placeholder {
+			color: $grey-light;
+		}
+
 	}
+}
+
+@mixin placeholder {
+	::-webkit-input-placeholder { @content };
+	:-moz-placeholder           { @content };
+	::-moz-placeholder          { @content };
+	:-ms-input-placeholder      { @content }; 
 }
 
 /* Stile freccia select di bulma */
 
 .select:after {
-	border-color: #303030 !important;
+	border-color: $grey-dark !important;
 }
