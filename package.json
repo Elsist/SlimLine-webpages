@@ -4,10 +4,7 @@
   "description": "Pagine web SlimLine",
   "main": "index.js",
   "scripts": {
-    "css-build": "node-sass --omit-source-map-url src/sass/index.scss dist/scripts/css/index.css",
-    "css-watch": "npm run css-build -- --watch",
-    "start": "npm run css-watch",
-    "terser": "terser  src/js/*.js -o dist/scripts/js/index.js -c"
+    "webpack": "webpack"
   },
   "author": "Gianluca Raftacco",
   "license": "ISC",
