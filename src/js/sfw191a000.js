@@ -206,3 +206,38 @@ function try_json( json_string ) {
     catch (e) { }
     return false;
 };
+
+/**
+ * Funzione format_mac( mac )
+ * 
+ * Funzione per formattare il mac address in hex
+ * 
+ * @param string mac stringa contente il mac address
+ * @return string mac stringa formattata corretta del mac
+ */
+
+export function format_mac( mac ){
+
+	/**
+	 * Creo un array di byte arrivandomi intera
+	 * 112.179.213.19.213.251
+	*/
+
+	mac = mac.split('.');
+
+	/**
+	 * Creo un array di byte arrivandomi intera
+	 * 112.179.213.19.213.251
+	*/
+
+	parseInt("112").toString(16);
+
+	for( var i = 0; i < mac.length; i += 1 ) {
+		mac[i] = parseInt(mac[i]).toString(16);
+	}
+
+	mac = mac.join(":");
+	mac = mac.toString(String);
+
+	return mac;
+}
