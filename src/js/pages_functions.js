@@ -2,7 +2,28 @@
  * Importazioni JS
  */
 
-import { read_data, send_data, data_page } from './sfw191a000';
+import { read_data, send_data, data_page, format_mac } from './sfw191a000';
+
+/**
+ * Function imdex_page()
+ * 
+ * Funzione gestione pagina device
+ */
+export function index_page() {
+
+	read_data( data_page, display_value );
+	setInterval(function(){ read_data( data_page, display_value ); }, 1000);
+
+	// Funzione di visualizzazione variabili.
+
+	function display_value( response ) {
+
+		// Display value in view.
+	
+		document.getElementById( "OSID_SYSTEM_UP_TIME" ).innerHTML = response.OSID_SYSTEM_UP_TIME;
+
+	}
+}
 
 /**
  * Function device_page()
@@ -27,6 +48,10 @@ export function device_page() {
 		event.preventDefault();
 		send_data(this, data_page, display_value );
 	})
+	document.querySelector('#ETH0').addEventListener( 'submit', function(event) {
+		event.preventDefault();
+		send_data(this, data_page, display_value );
+	})
 
 	// Funzione di visualizzazione variabili.
 
@@ -46,11 +71,11 @@ export function device_page() {
 		document.getElementById( "OSID_COM2_PARITY_view" ).innerHTML = response.OSID_COM2_PARITY;
 		document.getElementById( "OSID_COM2_DATA_BITS_view" ).innerHTML = response.OSID_COM2_DATA_BITS;
 		document.getElementById( "OSID_COM2_STOP_BITS_view" ).innerHTML = response.OSID_COM2_STOP_BITS;
-		document.getElementById( "OSID_ETH0_ACT_IP_view" ).innerHTML = response.OSID_ETH0_ACT_IP;
-		document.getElementById( "OSID_ETH0_MAC" ).innerHTML = response.OSID_ETH0_MAC;
-		document.getElementById( "OSID_ETH0_ACT_GATEWAY_view" ).innerHTML = response.OSID_ETH0_ACT_GATEWAY;
-		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY_view" ).innerHTML = response.OSID_ETH0_ACT_DNS_PRIMARY;
-		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY_view" ).innerHTML = response.OSID_ETH0_ACT_DNS_SECONDARY;
+		document.getElementById( "OSID_ETH0_ACT_IP_view" ).innerHTML = response.OSID_ETH0_ACT_IP.replaceAll(",", ".");
+		document.getElementById( "OSID_ETH0_MAC" ).innerHTML = format_mac( response.OSID_ETH0_MAC );
+		document.getElementById( "OSID_ETH0_ACT_GATEWAY_view" ).innerHTML = response.OSID_ETH0_ACT_GATEWAY.replaceAll(",", ".");
+		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY_view" ).innerHTML = response.OSID_ETH0_ACT_DNS_PRIMARY.replaceAll(",", ".");
+		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY_view" ).innerHTML = response.OSID_ETH0_ACT_DNS_SECONDARY.replaceAll(",", ".");
 	
 		// Display value in input.
 
@@ -75,13 +100,13 @@ export function device_page() {
 		document.getElementById( "OSID_COM2_DTR_MNG_input" ).value = response.OSID_COM2_DTR_MNG;
 		document.getElementById( "OSID_COM2_DTR_ON_TIME_input" ).value = response.OSID_COM2_DTR_ON_TIME;
 		document.getElementById( "OSID_COM2_DTR_OFF_TIME_input" ).value = response.OSID_COM2_DTR_OFF_TIME;
-		document.getElementById( "OSID_ETH0_ACT_IP_input" ).value = response.OSID_ETH0_ACT_IP;
+		document.getElementById( "OSID_ETH0_ACT_IP_input" ).value = response.OSID_ETH0_ACT_IP.replaceAll(",", ".");
 		document.getElementById( "OSID_ETH0_DHCP_EN_input" ).value = response.OSID_ETH0_DHCP_EN;
-		document.getElementById( "OSID_ETH0_ACT_MASK_input" ).value = response.OSID_ETH0_ACT_MASK;
-		document.getElementById( "OSID_ETH0_ACT_GATEWAY_input" ).value = response.OSID_ETH0_ACT_GATEWAY;
-		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY_input" ).value = response.OSID_ETH0_ACT_DNS_PRIMARY;
-		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY_input" ).value = response.OSID_ETH0_ACT_DNS_SECONDARY;
+		document.getElementById( "OSID_ETH0_ACT_MASK_input" ).value = response.OSID_ETH0_ACT_MASK.replaceAll(",", ".");
+		document.getElementById( "OSID_ETH0_ACT_GATEWAY_input" ).value = response.OSID_ETH0_ACT_GATEWAY.replaceAll(",", ".");
+		document.getElementById( "OSID_ETH0_DHCP_DNS_input" ).value = response.OSID_ETH0_DHCP_DNS;
+		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY_input" ).value = response.OSID_ETH0_ACT_DNS_PRIMARY.replaceAll(",", ".");
+		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY_input" ).value = response.OSID_ETH0_ACT_DNS_SECONDARY.replaceAll(",", ".");
 
-		
 	}
 }
