@@ -5,11 +5,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SlimLine Webpages</title>
-		<link rel="stylesheet" href="../scripts/css/index.css">
+		<link rel="stylesheet" href="../scripts/css/bundle.css">
 		<!-- temp -->
 		<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
-		<!-- temp -->
-	</head>
+		<!-- temp -->		
+		</head>
 	<body class="has-navbar-fixed-top">
 		<!-- navbar start -->
 		<nav class="navbar is-fixed-top has-background-primary" role="navigation" aria-label="main navigation">
@@ -24,7 +24,7 @@
 				</a>
 			</div>
 			<div id="navbarBasicExample" class="navbar-menu">
-				<div class="navbar-start">
+				<div class="navbar-start is-hidden-desktop">
 					<a class="navbar-item">	Home </a>
 					<a class="navbar-item"> Documentation </a>
 				</div>
@@ -54,15 +54,15 @@
 		<div class="has-background-dark navbar-menu is-hidden-touch els-sidebar">
 			<aside class="menu pt-4 pb-4 has-text-weight-bold" >
 				<ul class="menu-list sidebar-menu" id="nav">
-				<li><a href="Index.html" class="has-text-grey-light"> <ion-icon name="home" size="medium" class="pr-4"></ion-icon> <span>Dashboard</span></a></li>
-				<li><a href="General.html" class="has-text-grey-light"> <ion-icon name="build" size="medium" class="pr-4"></ion-icon> <span>General</span></a></li>
-				<li><a href="Devices.html" class="has-text-grey-light"> <ion-icon name="bulb" size="medium" class="pr-4"></ion-icon> <span>Devices</span></a></li>
-				<li><a href="Securety.html" class="has-text-grey-light"> <ion-icon name="shield" size="medium" class="pr-4"></ion-icon> <span>Securety</span></a></li>
+				<li><a href="Index.html" class="has-text-grey"> <ion-icon name="home-outline" size="" class="pr-4 is-size-5"></ion-icon> <span>Dashboard</span></a></li>
+				<li><a href="General.html" class="has-text-grey"> <ion-icon name="build-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>General</span></a></li>
+				<li><a href="Devices.html" class="has-text-grey"> <ion-icon name="bulb-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Devices</span></a></li>
+				<li><a href="Securety.html" class="has-text-grey"> <ion-icon name="shield-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Securety</span></a></li>
 				</ul>
 			</aside>
 		</div>
 		<!-- sidebar end -->
-		<div id ="main" class="columns">
+		<div class="columns" id="main">
 			<!-- mainbar start -->
 			<div class="column is-full-touch" id="app">
 				<div class="columns p-4">
@@ -77,7 +77,7 @@
 											<div class="level-item">
 												<div>
 													<p class="subtitle is-spaced">System</p>
-													<p class="title" id="system">-</p>
+													<p class="title" id="OSID_SYSTEM_UP_TIME">-</p>
 												</div>
 											</div>
 										<div class="level-item">
@@ -169,30 +169,6 @@
 			</div>
 			<!-- mainbar end -->
 		</div>
-		<script type="module">
-
-			// Importazioni.
-
-			import { read_data, send_data, data_page } from '../scripts/js/index.js';
-
-			read_data( data_page, setup_values );
-			setInterval(function(){ read_data( data_page, setup_values ); }, 1000);
-	
-			// Funzione di settaggio variabili
-		
-			document.querySelector('#MyForm').addEventListener( 'submit', function(event) {
-				event.preventDefault();
-				send_data(this, "", data_page, setup_values );
-			})
-
-			// Funzione di visualizzazione variabili.
-
-			function setup_values( response ) {
-				document.getElementById( "system" ).innerHTML = response.system;
-				document.getElementById( "status" ).innerHTML = response.status;
-				document.getElementById( "result" ).innerHTML = response.result;
-			}
-
-		</script>
+		<script type="module" src="../scripts/js/bundle.js"></script>
 	</body>
 </html>
