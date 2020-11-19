@@ -33,9 +33,10 @@ var semaforo; // Variabile semaforica.
  * definita in "Page".
  *
  * @param string page_data pagina sulla quale inviare le richieste.
+ * @param bool on_loop variabile true o false che mi indica se sto leggendo a tempo o no, da passare a check_function() che a sua volta lo passwrà a fct (serve per skippare gli input su refresh on interval).
  * @param function fct indirizzo della funzione da eseguire al callback.
  */
-export function read_data( page_data, fct ) {
+export function read_data( page_data, on_loop, fct ) {
     
     // Oggetto richiesta
 
@@ -64,7 +65,7 @@ export function read_data( page_data, fct ) {
 
         // Definisco funzione di gestione risposta ed invio richiesta. Nel send occorre sempre specificare "null".
 
-        XHR.onreadystatechange = function () { check_function( XHR.readyState, XHR.responseText, false ); };
+        XHR.onreadystatechange = function () { check_function( XHR.readyState, XHR.responseText, false, on_loop ); };
         XHR.send(null);
     }
 }
@@ -93,7 +94,12 @@ export function send_data( form_element, data_page, fct ) {
     var i;
     for (i = 0; i < form_element.length ;i++) {
 		if ( form_element.elements[i].type == "submit" ) continue; // Escludo il botton dalle variabili inviate nel form.
-    	data[form_element.elements[i].name] = form_element.elements[i].value;
+		// Se sull'input ho segnato data-plcforma="epoch" allora converto la data in epoch.
+		else if ( form_element.elements[i].dataset.plcformat == "epoch" ) {
+			alert('DemoDemo');
+			data[form_element.elements[i].name] = Date.parse( form_element.elements[i].value )/1000;
+		}
+    	else data[form_element.elements[i].name] = form_element.elements[i].value;
     }
 	
 	console.log("data_page:" + data_page);
@@ -120,7 +126,7 @@ export function send_data( form_element, data_page, fct ) {
 
     // Define what happens on successful data submission
     XHR.addEventListener( 'load', function(event) {
-        check_function( XHR.readyState, XHR.responseText, true );
+        check_function( XHR.readyState, XHR.responseText, true, false );
     } );
 
     // Define what happens in case of error
@@ -148,8 +154,9 @@ export function send_data( form_element, data_page, fct ) {
  * @param int status codice di risposta.
  * @param string response stringa di risposta.
  * @param bool display_messages varabile booleana che mi indica se stampare i messaggi o meno.
+ * @param bool on_loop varabile booleana mi indica se chiamata a tempo (serve per skippare gli input su refresh on interval).
  */
-function check_function( status, response, display_messages ) {
+function check_function( status, response, display_messages, on_loop ) {
 
     // Se il codice di risposta è diverso da 4 allora non faccio nulla.
 
@@ -180,7 +187,7 @@ function check_function( status, response, display_messages ) {
 
     // Chiamo funzione.
 
-    fct_address( response );
+    fct_address( response, on_loop );
 }
 
 /**
@@ -240,4 +247,54 @@ export function format_mac( mac ){
 	mac = mac.toString(String);
 
 	return mac;
+}
+
+/**
+ * Funzione seconds_to_dhms( seconds )
+ * 
+ * @param int seconds secondi trascorsi
+ */
+export function seconds_to_dhms( seconds ) {
+
+	seconds = Number(seconds);
+	var d = Math.floor(seconds / (3600*24));
+	var h = Math.floor(seconds % (3600*24) / 3600);
+	var m = Math.floor(seconds % 3600 / 60);
+	var s = Math.floor(seconds % 60);
+	
+	var dDisplay = d.toString();
+	var hDisplay = h.toString();
+	var mDisplay = m.toString();
+	var sDisplay = s.toString();
+	return dDisplay + '-' + hDisplay.padStart(2, '0') + ':' + mDisplay.padStart(2, '0') + ':' + sDisplay.padStart(2, '0');
+}
+
+/**
+ * Funzione jsdate_to_rfc3339( date )
+ * 
+ * @param datetime d variabile javascript datetime della data da convertire.
+ */
+export function jsdate_to_rfc3339( d ) {
+    
+    function pad(n) {
+        return n < 10 ? "0" + n : n;
+    }
+
+    function timezoneOffset(offset) {
+        var sign;
+        if (offset === 0) {
+            return "Z";
+        }
+        sign = (offset > 0) ? "-" : "+";
+        offset = Math.abs(offset);
+        return sign + pad(Math.floor(offset / 60)) + ":" + pad(offset % 60);
+    }
+
+    return d.getFullYear() + "-" +
+        pad(d.getMonth() + 1) + "-" +
+        pad(d.getDate()) + "T" +
+        pad(d.getHours()) + ":" +
+        pad(d.getMinutes()) + ":" +
+        pad(d.getSeconds()); //+ 
+        //timezoneOffset(d.getTimezoneOffset());
 }

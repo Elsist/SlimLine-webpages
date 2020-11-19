@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SlimLine Webpages</title>
+		<link rel="stylesheet" href="../scripts/css/bundle.css">
+		<!-- temp -->
+		<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+		<!-- temp -->		
+	</head>
+	<body class="has-navbar-fixed-top">
+		<!-- navbar start -->
+		<nav class="navbar is-fixed-top has-background-primary" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="//:www.elsist.biz">
+					<img src="img/elsl.png" width="112" height="28">
+				</a>
+				<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+			<div id="navbarBasicExample" class="navbar-menu">
+				<div class="navbar-start is-hidden-desktop">
+					<a class="navbar-item">	Home </a>
+					<a class="navbar-item"> Documentation </a>
+				</div>
+				<!-- start navbar user desktop-->
+				<div class="navbar-end is-hidden-touch">
+					<div class="navbar-item has-dropdown is-hoverable">
+					  <a class="navbar-link is-uppercase is-size-7">
+						Admin
+						<ion-icon name="person-circle" size="large" class="pl-2"></ion-icon>
+					  </a>
+					  <div class="navbar-dropdown is-right">
+						<a class="navbar-item has-text-dark">
+						  Logout
+						</a>
+					  </div>
+					</div>
+				</div>
+				<!-- end navbar user desktop-->
+			</div>
+		</nav>
+		<!-- navbar end -->
+		<!-- sidebar start -->
+		<div class="has-background-dark navbar-menu is-hidden-touch els-sidebar">
+			<aside class="menu pt-4 pb-4 has-text-weight-bold" >
+				<ul class="menu-list sidebar-menu" id="nav">
+				<li><a href="Index.html" class="has-text-grey"> <ion-icon name="home-outline" size="" class="pr-4 is-size-5"></ion-icon> <span>Dashboard</span></a></li>
+				<li><a href="General.html" class="has-text-grey"> <ion-icon name="build-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>General</span></a></li>
+				<li><a href="Devices.html" class="has-text-grey"> <ion-icon name="bulb-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Devices</span></a></li>
+				<li><a href="Securety.html" class="has-text-grey"> <ion-icon name="shield-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Securety</span></a></li>
+				</ul>
+			</aside>
+		</div>
+		<!-- sidebar end -->
+		<section class="section" id="main">
+			<!-- mainbar start -->
+			<!-- start datetime settings -->
+			<div class="box is-shadowless has-background-white">
+				<div class="columns is-vcentered">
+					<div class="column is-one-fifth has-text-weight-bold">
+						DATE TIME SETTINGS
+					</div>
+					<div class="column">
+						TIME ZONE: <span id="OSID_TIME_ZONE_view" class="has-text-weight-semibold">-</span>,
+						DAYLIGHT ZONE: <span id="OSID_DAYLIGHT_ZONE_view" class="has-text-weight-semibold">-</span>,
+						DATE - TIME: <span id="OSID_LOCAL_DATETIME_view" class="has-text-weight-semibold">-</span>,
+					</div>
+					<div class="column has-text-right-tablet">
+						<a data-toggle="modal" data-target="modal-DATETIME"><ion-icon name="settings-outline" size="large" class="has-text-grey-dark"></ion-icon></a>
+					</div>
+				</div>
+			</div>
+			<!-- end datetime settings -->
+			<!-- start device settings -->
+			<div class="box is-shadowless has-background-white">
+				<div class="columns is-vcentered">
+					<div class="column is-one-fifth has-text-weight-bold">
+						SYSTEM SETTINGS
+					</div>
+					<div class="column">
+						DEVICE NAME: <span id="OSID_DEVICE_NAME_view" class="has-text-weight-semibold">-</span>,
+						CUSTOMER CODE: <span id="OSID_CUSTOMER_CODE_view" class="has-text-weight-semibold">-</span>
+					</div>
+					<div class="column has-text-right-tablet">
+						<a data-toggle="modal" data-target="modal-SYSTEM"><ion-icon name="settings-outline" size="large" class="has-text-grey-dark"></ion-icon></a>
+					</div>
+				</div>
+			</div>
+			<!-- end device settings -->
+			<!-- start modals -->
+			<!-- modal DATETIME start -->
+			<div class="modal" id="modal-DATETIME">
+				<form id="DATETIME">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<ion-icon name="settings-outline" class="is-size-3 mr-4 has-text-success"></ion-icon> <p class="modal-card-title has-text-weight-bold">Date time settings</p>
+						</header>
+						<section class="modal-card-body">
+							<div class="content">
+								<!-- start field -->
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label has-text-weight-semibold is-size-7">Time zone</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<div class="select is-fullwidth">
+													<select id="OSID_TIME_ZONE_input" name="OSID_TIME_ZONE">
+														<option value="-12">(GMT -12:00) Eniwetok, Kwajalein</option>
+														<option value="-11">(GMT -11:00) Midway Island, Samoa</option>
+														<option value="-10">(GMT -10:00) Hawaii</option>
+														<option value="-9">(GMT -9:00) Alaska</option>
+														<option value="-8">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+														<option value="-7">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+														<option value="-6">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+														<option value="-5">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+														<option value="-4">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+														<option value="-3">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+														<option value="-2">(GMT -2:00) Mid-Atlantic</option>
+														<option value="-1">(GMT -1:00) Azores, Cape Verde Islands</option>
+														<option value="0">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+														<option value="1">(GMT +1:00) Rome, Brussels, Copenhagen, Madrid, Paris</option>
+														<option value="2">(GMT +2:00) Kaliningrad, South Africa</option>
+														<option value="3">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+														<option value="4">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+														<option value="5">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+														<option value="6">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+														<option value="7">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+														<option value="8">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+														<option value="9">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+														<option value="10">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+														<option value="11">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+														<option value="12">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end field -->
+								<!-- start field -->
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label has-text-weight-semibold is-size-7">Daylight zone</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<div class="select is-fullwidth">
+													<select id="OSID_DAYLIGHT_ZONE_input" name="OSID_DAYLIGHT_ZONE">
+														<option value="0">0 - Not use</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end field -->
+								<!-- start field -->
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label has-text-weight-semibold is-size-7">Date time</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input type="datetime-local" step="1" id="OSID_LOCAL_DATETIME_input" data-plcformat="epoch" name="OSID_LOCAL_DATETIME" class="input"
+													type="text" placeholder="Normal sized input">
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end field -->
+							</div>
+						</section>
+						<footer class="modal-card-foot">
+							<button type="submit" class="button is-success is-fullwidth has-text-weight-bold">Save</button>
+							<a class="button is-danger is-fullwidth modal-close-button has-text-weight-bold">Close</a>
+						</footer>
+					</div>
+				</form>
+			</div>
+			<!-- modal DATETIME end -->
+			<!-- modal SYSTEM start -->
+			<div class="modal" id="modal-SYSTEM">
+				<form id="SYSTEM">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<ion-icon name="settings-outline" class="is-size-3 mr-4"></ion-icon> <p class="modal-card-title has-text-weight-bold">System Settings</p>
+						</header>
+						<section class="modal-card-body">
+							<div class="content">
+								<!-- start field -->
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label has-text-weight-semibold is-size-7">Device name</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input id="OSID_DEVICE_NAME_input" name="OSID_DEVICE_NAME" class="input"
+													type="text" placeholder="Normal sized input">
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end field -->
+								<!-- start field -->
+								<div class="field is-horizontal">
+									<div class="field-label is-normal">
+										<label class="label has-text-weight-semibold is-size-7">Customer code</label>
+									</div>
+									<div class="field-body">
+										<div class="field">
+											<div class="control">
+												<input id="OSID_CUSTOMER_CODE_input" name="OSID_CUSTOMER_CODE" class="input"
+													type="text" placeholder="Normal sized input">
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end field -->
+							</div>
+						</section>
+						<footer class="modal-card-foot">
+							<button type="submit" class="button is-success is-fullwidth has-text-weight-bold">Save</button>
+							<a class="button is-danger is-fullwidth modal-close-button has-text-weight-bold">Close</a>
+						</footer>
+					</div>
+				</form>
+			</div>
+			<!-- modal SYSTEM end -->
+			<!-- end modals -->
+			<!-- mainbar end -->
+		</section>
+		<script type="module" src="../scripts/js/bundle.js"></script>
+	</body>
+</html>
