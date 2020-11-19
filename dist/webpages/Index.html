@@ -39,10 +39,6 @@
 						<a class="navbar-item has-text-dark">
 						  Logout
 						</a>
-						<hr class="navbar-divider">
-						<a class="navbar-item has-text-dark">
-						  User management
-						</a>
 					  </div>
 					</div>
 				</div>
@@ -62,113 +58,115 @@
 			</aside>
 		</div>
 		<!-- sidebar end -->
-		<div class="columns" id="main">
+		<section class="section" id="main">
 			<!-- mainbar start -->
-			<div class="column is-full-touch" id="app">
-				<div class="columns p-4">
-					<div class="column">
-						<!-- content start -->
-						<!-- tiles start -->
-						<div class="tile is-ancestor">
-							<div class="tile is-parent">
-								<div class="card tile is-child is-shadowless">
-									<div class="card-content">
-										<div class="level">
-											<div class="level-item">
-												<div>
-													<p class="subtitle is-spaced">System</p>
-													<p class="title" id="OSID_SYSTEM_UP_TIME">-</p>
-												</div>
-											</div>
-										<div class="level-item">
-											<ion-icon name="hardware-chip" size="large" class="pr-4 has-text-primary"></ion-icon>
-										</div>
-										</div>
+			<!-- tiles start -->
+			<div class="tile is-ancestor">
+				<div class="tile is-parent">
+					<div class="tile is-child has-background-white box is-shadowless">
+							<div class="level">
+								<div class="level-item">
+									<div>
+										<p class="subtitle is-spaced">System up time <span class="is-size-7">(d-h:m:s)</span></p>
+										<p class="title" id="OSID_SYSTEM_UP_TIME">-</p>
 									</div>
+								</div>
+								<div class="level-item">
+									<ion-icon name="flash-outline" size="large" class="pr-4 has-text-primary"></ion-icon>
 								</div>
 							</div>
-							<div class="tile is-parent">
-								<div class="card tile is-child is-shadowless">
-									<div class="card-content">
-										<div class="level">
-											<div class="level-item">
-												<div>
-													<p class="subtitle is-spaced">PLC</p>
-													<p class="title" id="status">-</p>
-												</div>
-											</div>
-											<div class="level-item">
-												<ion-icon name="rocket" size="large" class="pr-4 has-text-primary"></ion-icon>
-											</div>
-										</div>
-									</div>
+					</div>
+				</div>
+				<div class="tile is-parent">
+					<div class="tile is-child box is-shadowless">
+						<div class="level">
+							<div class="level-item">
+								<div>
+									<p class="subtitle is-spaced">PLC</p>
+									<p class="title" id="OSID_PLC_STATUS">-</p>
 								</div>
 							</div>
-							<div class="tile is-parent">
-								<div class="card tile is-child is-shadowless">
-									<div class="card-content">
-										<div class="level">
-											<div class="level-item">
-												<div>
-													<p class="subtitle is-spaced">Memory</p>
-													<p class="title" id="result">-</p>
-												</div>
-											</div>
-											<div class="level-item">
-												<ion-icon name="server" size="large" class="pr-4 has-text-primary"></ion-icon>
-											</div>
-										</div>
-									</div>
-								</div>
+							<div class="level-item">
+								<ion-icon name="layers-outline" size="large" class="pr-4 has-text-primary"></ion-icon>
 							</div>
 						</div>
-						<!-- tiles end -->
-						<!-- tiles start -->
-						<div class="tile is-ancestor">
-							<div class="tile is-parent">
-								<div class="tile is-child">
-									<div class="card is-shadowless">
-										<header class="card-header is-shadowless">
-											<p class="card-header-title"> Device information </p>
-										</header>
-										<div class="card-content">
-											<div class="content">
-												<p>Code: <span>-</span></p>
-												<p>Serial: <span>-</span></p>
-												<p>UID: <span>-</span></p>
-												<p>Software Code: <span>-</span></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tile is-parent">
-								<div class="tile is-child">
-									<div class="card is-shadowless">
-										<header class="card-header is-shadowless"> <p class="card-header-title"> PLC Information </p> </header>
-										<div class="card-content">
-											<div class="content">
-												<p>TIP: <span>-</span></p>
-												<p>Manufacturer Code: <span>-</span></p>
-												<p>Customer Code: <span>-</span></p>
-												<p>Program: <span>-</span></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- tiles end -->
-						<form ref="form" id="MyForm" name="MyForm" method="post" action="demo.htm">
-							<input name="UINT 12" />
-							<button type="submit">Submit form</button>
-						</form>
-						<!-- content end -->
 					</div>
 				</div>
 			</div>
+			<!-- tiles end -->
+			<!-- tiles start -->
+			<div class="tile is-ancestor">
+				<div class="tile is-parent is-vertical">
+					<div class="tile is-child box is-shadowless has-background-white">
+						<p class="subtitle is-spaced has-text-weight-bold">System informations</p>
+						<p>Name: <span id="OSID_DEVICE_NAME" class="has-text-weight-bold">-</span></p>
+						<p>Time: <span id="OSID_LOCAL_DATETIME" class="has-text-weight-bold">-</span></p>
+						<p>Code: <span id="OSID_PRODUCT_CODE" class="has-text-weight-bold">-</span></p>
+						<p>Serial: <span id="OSID_PRODUCT_SERIAL" class="has-text-weight-bold">-</span></p>
+						<p>Unique ID: <span id="OSID_UNIQUE_ID" class="has-text-weight-bold">-</span></p>
+						<p>Software code: <span id="OSID_FIRMWARE_VER" class="has-text-weight-bold">-</span></p>
+					</div>
+					<div class="tile is-child box is-shadowless has-background-white">
+						<p class="subtitle is-spaced has-text-weight-bold">PLC informations</p>
+						<p>Targhet ID: <span id="OSID_XTARGET_ID" class="has-text-weight-bold">-</span></p>
+						<p>Manufacturer code: <span id="OSID_MANUFACT_CODE" class="has-text-weight-bold">-</span></p>
+						<p>Customer code: <span id="OSID_CUSTOMER_CODE" class="has-text-weight-bold">-</span></p>
+						<p>Program: <span id="OSID_PLC_PROGRAM_VER" class="has-text-weight-bold">-</span></p>
+					</div>
+				</div>
+				<div class="tile is-parent">
+					<div class="tile is-child box is-shadowless">
+						<div class="columns">
+							<div class="column">
+								<p class="subtitle is-spaced has-text-weight-bold">Stats</p>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-one-third">
+								PMAlloc use: <span id="OSID_PLC_MALLOC_USE_label" class="has-text-weight-bold"> - </span>%
+							</div>
+							<div class="column">
+								<progress id="OSID_PLC_MALLOC_USE_progress" class="progress is-medium is-success" max="100"></progress>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-one-third">
+								RMAlloc use: <span id="OSID_SYSTEM_RMALLOC_USE_label" class="has-text-weight-bold"> - </span>%
+							</div>
+							<div class="column">
+								<progress id="OSID_SYSTEM_RMALLOC_USE_progress" class="progress is-medium is-success" max="100"></progress>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-one-third">
+								TFast load: <span id="OSID_PLC_TFAST_LOAD_label" class="has-text-weight-bold"> - </span>%
+							</div>
+							<div class="column">
+								<progress id="OSID_PLC_TFAST_LOAD_progress" class="progress is-medium is-success" max="100"></progress>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-one-third">
+								TSlow load: <span id="OSID_PLC_TSLOW_LOAD_label" class="has-text-weight-bold"> - </span>%
+							</div>
+							<div class="column">
+								<progress id="OSID_PLC_TSLOW_LOAD_progress" class="progress is-medium is-success" max="100"></progress>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-one-third">
+								TBack load: <span id="OSID_PLC_TBACK_LOAD_label" class="has-text-weight-bold"> - </span>%
+							</div>
+							<div class="column">
+								<progress id="OSID_PLC_TBACK_LOAD_progress" class="progress is-medium is-success" max="150"></progress>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- tiles end -->
 			<!-- mainbar end -->
-		</div>
+		</section>
 		<script type="module" src="../scripts/js/bundle.js"></script>
 	</body>
 </html>
