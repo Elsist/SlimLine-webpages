@@ -2,9 +2,9 @@
 
 /* Stili riguardanti le pagine da loggato */
 
-#main.columns{
+#main {
 	@media screen and (min-width: 1023px) {
-		margin-left: 188px; // 200 - 12 (pixel di padding di default sulle colonne)
+		margin-left: 200px; // 200 - 12 (pixel di padding di default sulle colonne)
 	}
 }
 
