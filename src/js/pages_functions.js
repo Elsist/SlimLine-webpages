@@ -2,7 +2,7 @@
  * Importazioni JS
  */
 
-import { read_data, send_data, data_page, seconds_to_dhms, jsdate_to_rfc3339 } from './sfw191a000';
+import { read_data, send_data, data_page, seconds_to_dhms, jsdate_to_rfc3339, jsdate_to_readable } from './sfw191a000';
 
 /**
  * Function index_page()
@@ -30,13 +30,38 @@ export function index_page() {
 		document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TFAST_LOAD_label" ).innerHTML = response.OSID_PLC_TFAST_LOAD;
 		document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TSLOW_LOAD_label" ).innerHTML = response.OSID_PLC_TSLOW_LOAD;
 		document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TBACK_LOAD_label" ).innerHTML = response.OSID_PLC_TBACK_LOAD;
+		document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).value = document.getElementById( "OSID_PLC_ERR_LOAD_label" ).innerHTML = response.OSID_PLC_ERR_LOAD;
 		
+		if ( response.OSID_PLC_TFAST_LOAD > 50 ) {
+			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.remove("is-success");
+			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.add("is-danger");
+		} else {
+			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.remove("is-danger");
+			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.add("is-success");
+		}
+
+		if ( response.OSID_PLC_TSLOW_LOAD > 50 ) {
+			document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).classList.remove("is-success");
+			document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).classList.add("is-danger");
+		} else {
+			document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).classList.remove("is-danger");
+			document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).classList.add("is-success");
+		}
+
 		if ( response.OSID_PLC_TBACK_LOAD > 100 ) {
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.remove("is-success");
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.add("is-danger");
 		} else {
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.remove("is-danger");
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.add("is-success");
+		}
+
+		if ( response.OSID_PLC_ERR_LOAD > 50 ) {
+			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.remove("is-success");
+			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.add("is-danger");
+		} else {
+			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.remove("is-danger");
+			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.add("is-success");
 		}
 
 		// PLC Informations.
@@ -49,7 +74,7 @@ export function index_page() {
 		// System Informations.
 
 		document.getElementById( "OSID_DEVICE_NAME" ).innerHTML = response.OSID_DEVICE_NAME;
-		document.getElementById( "OSID_LOCAL_DATETIME" ).innerHTML = response.OSID_LOCAL_DATETIME;
+		document.getElementById( "OSID_LOCAL_DATETIME" ).innerHTML = jsdate_to_readable( response.OSID_LOCAL_DATETIME );
 		document.getElementById( "OSID_PRODUCT_CODE" ).innerHTML = response.OSID_PRODUCT_CODE;
 		document.getElementById( "OSID_PRODUCT_SERIAL" ).innerHTML = response.OSID_PRODUCT_SERIAL;
 		document.getElementById( "OSID_UNIQUE_ID" ).innerHTML = response.OSID_UNIQUE_ID;
@@ -93,7 +118,7 @@ export function general_page() {
 		document.getElementById( "OSID_DAYLIGHT_ZONE_view" ).innerHTML = response.OSID_DAYLIGHT_ZONE;
 
 		// Il plc torna secondi e devo convertirli in un data leggibili.
-		document.getElementById( "OSID_LOCAL_DATETIME_view" ).innerHTML = new Date( response.OSID_LOCAL_DATETIME * 1000 );
+		document.getElementById( "OSID_LOCAL_DATETIME_view" ).innerHTML = jsdate_to_readable( response.OSID_LOCAL_DATETIME );
 
 		// System settings.
 
@@ -207,5 +232,142 @@ export function device_page() {
 		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY_input" ).value = response.OSID_ETH0_ACT_DNS_PRIMARY;
 		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY_input" ).value = response.OSID_ETH0_ACT_DNS_SECONDARY;
 
+	}
+}
+
+/**
+ * Function servers_page()
+ * 
+ * Funzione gestione pagina servers
+ */
+export function servers_page() {
+
+	read_data( data_page, false, display_value );
+
+	// Funzioni di settaggio variabili.
+
+	document.querySelector('#TELNET').addEventListener( 'submit', function(event) {
+		event.preventDefault();
+		send_data(this, data_page, display_value );
+	})
+	document.querySelector('#WEB').addEventListener( 'submit', function(event) {
+		event.preventDefault();
+		send_data(this, data_page, display_value );
+	})
+	document.querySelector('#FTP').addEventListener( 'submit', function(event) {
+		event.preventDefault();
+		send_data(this, data_page, display_value );
+	})
+	document.querySelector('#IP0').addEventListener( 'submit', function(event) {
+		event.preventDefault();
+		send_data(this, data_page, display_value );
+	})
+	document.querySelector('#IP1').addEventListener( 'submit', function(event) {
+		event.preventDefault();
+		send_data(this, data_page, display_value );
+	})
+	document.querySelector('#IP2').addEventListener( 'submit', function(event) {
+		event.preventDefault();
+		send_data(this, data_page, display_value );
+	})
+
+	// Funzione di visualizzazione variabili.
+
+	function display_value( response, on_loop ) {
+
+		// Display value in view.
+	
+		document.getElementById( "OSID_TELNET_SVR_PORT_view" ).innerHTML = response.OSID_TELNET_SVR_PORT;
+		document.getElementById( "OSID_WEB_SVR_PORT_view" ).innerHTML = response.OSID_WEB_SVR_PORT;
+		document.getElementById( "OSID_FTP_SVR_PORT_view" ).innerHTML = response.OSID_FTP_SVR_PORT;
+		document.getElementById( "OSID_FTP_SVR_PASSIVE_PORT_view" ).innerHTML = response.OSID_FTP_SVR_PASSIVE_PORT;
+		document.getElementById( "OSID_IPSERVER0_PORT_view" ).innerHTML = response.OSID_IPSERVER0_PORT;
+		document.getElementById( "OSID_IPSERVER0_MODE_view" ).innerHTML = response.OSID_IPSERVER0_MODE;
+		document.getElementById( "OSID_IPSERVER0_CNN_view" ).innerHTML = response.OSID_IPSERVER0_CNN;
+		document.getElementById( "OSID_IPSERVER1_PORT_view" ).innerHTML = response.OSID_IPSERVER1_PORT;
+		document.getElementById( "OSID_IPSERVER1_MODE_view" ).innerHTML = response.OSID_IPSERVER1_MODE;
+		document.getElementById( "OSID_IPSERVER1_CNN_view" ).innerHTML = response.OSID_IPSERVER1_CNN;
+		document.getElementById( "OSID_IPSERVER2_PORT_view" ).innerHTML = response.OSID_IPSERVER2_PORT;
+		document.getElementById( "OSID_IPSERVER2_MODE_view" ).innerHTML = response.OSID_IPSERVER2_MODE;
+		document.getElementById( "OSID_IPSERVER2_CNN_view" ).innerHTML = response.OSID_IPSERVER2_CNN;
+
+		// On - Off labels
+
+		if ( Boolean( response.OSID_TELNET_SVR_EN ) ) {
+			document.getElementById("OSID_TELNET_SVR_EN_view").classList.add('is-success');
+			document.getElementById("OSID_TELNET_SVR_EN_view").classList.remove('is-normal');
+		} else {
+			document.getElementById("OSID_TELNET_SVR_EN_view").classList.remove('is-success');
+			document.getElementById("OSID_TELNET_SVR_EN_view").classList.add('is-normal');
+		}
+
+		if ( Boolean( response.OSID_WEB_SVR_EN ) ) {
+			document.getElementById("OSID_WEB_SVR_EN_view").classList.add('is-success');
+			document.getElementById("OSID_WEB_SVR_EN_view").classList.remove('is-normal');
+		} else {
+			document.getElementById("OSID_WEB_SVR_EN_view").classList.remove('is-success');
+			document.getElementById("OSID_WEB_SVR_EN_view").classList.add('is-normal');
+		}
+
+		if ( Boolean( response.OSID_FTP_SVR_EN ) ) {
+			document.getElementById("OSID_FTP_SVR_EN_view").classList.add('is-success');
+			document.getElementById("OSID_FTP_SVR_EN_view").classList.remove('is-normal');
+		} else {
+			document.getElementById("OSID_FTP_SVR_EN_view").classList.remove('is-success');
+			document.getElementById("OSID_FTP_SVR_EN_view").classList.add('is-normal');
+		}
+
+		if ( Boolean( response.OSID_IPSERVER0_EN ) ) {
+			document.getElementById("OSID_IPSERVER0_EN_view").classList.add('is-success');
+			document.getElementById("OSID_IPSERVER0_EN_view").classList.remove('is-normal');
+		} else {
+			document.getElementById("OSID_IPSERVER0_EN_view").classList.remove('is-success');
+			document.getElementById("OSID_IPSERVER0_EN_view").classList.add('is-normal');
+		}
+
+		if ( Boolean( response.OSID_IPSERVER1_EN ) ) {
+			document.getElementById("OSID_IPSERVER1_EN_view").classList.add('is-success');
+			document.getElementById("OSID_IPSERVER1_EN_view").classList.remove('is-normal');
+		} else {
+			document.getElementById("OSID_IPSERVER1_EN_view").classList.remove('is-success');
+			document.getElementById("OSID_IPSERVER1_EN_view").classList.add('is-normal');
+		}
+
+		if ( Boolean( response.OSID_IPSERVER2_EN ) ) {
+			document.getElementById("OSID_IPSERVER2_EN_view").classList.add('is-success');
+			document.getElementById("OSID_IPSERVER2_EN_view").classList.remove('is-normal');
+		} else {
+			document.getElementById("OSID_IPSERVER2_EN_view").classList.remove('is-success');
+			document.getElementById("OSID_IPSERVER2_EN_view").classList.add('is-normal');
+		}
+
+		// Display value in input.
+		
+		document.getElementById( "OSID_TELNET_SVR_EN_input" ).value = response.OSID_TELNET_SVR_EN;
+		document.getElementById( "OSID_TELNET_SVR_PORT_input" ).value = response.OSID_TELNET_SVR_PORT;
+		document.getElementById( "OSID_WEB_SVR_EN_input" ).value = response.OSID_WEB_SVR_EN;
+		document.getElementById( "OSID_WEB_SVR_FAVICON_input" ).value = response.OSID_WEB_SVR_FAVICON;
+		document.getElementById( "OSID_WEB_SVR_DEFAULT_PG_input" ).value = response.OSID_WEB_SVR_DEFAULT_PG;
+		document.getElementById( "OSID_WEB_SVR_ERROR_PG_input" ).value = response.OSID_WEB_SVR_ERROR_PG;
+		document.getElementById( "OSID_WEB_SVR_NFOUND_PG_input" ).value = response.OSID_WEB_SVR_NFOUND_PG;
+		document.getElementById( "OSID_WEB_SVR_LOGIN_PG_input" ).value = response.OSID_WEB_SVR_LOGIN_PG;
+		document.getElementById( "OSID_WEB_SVR_ROOT_DIR_input" ).value = response.OSID_WEB_SVR_ROOT_DIR;
+		document.getElementById( "OSID_WEB_SVR_PORT_input" ).value = response.OSID_WEB_SVR_PORT;
+		document.getElementById( "OSID_FTP_SVR_EN_input" ).value = response.OSID_FTP_SVR_EN;
+		document.getElementById( "OSID_FTP_SVR_PORT_input" ).value = response.OSID_FTP_SVR_PORT;
+		document.getElementById( "OSID_FTP_SVR_PASSIVE_PORT_input" ).value = response.OSID_FTP_SVR_PASSIVE_PORT;
+		document.getElementById( "OSID_IPSERVER0_EN_input" ).value = response.OSID_IPSERVER0_EN;
+		document.getElementById( "OSID_IPSERVER0_MODE_input" ).value = response.OSID_IPSERVER0_MODE;
+		document.getElementById( "OSID_IPSERVER0_PORT_input" ).value = response.OSID_IPSERVER0_PORT;
+		document.getElementById( "OSID_IPSERVER0_CNN_input" ).value = response.OSID_IPSERVER0_CNN;
+		document.getElementById( "OSID_IPSERVER1_EN_input" ).value = response.OSID_IPSERVER1_EN;
+		document.getElementById( "OSID_IPSERVER1_MODE_input" ).value = response.OSID_IPSERVER1_MODE;
+		document.getElementById( "OSID_IPSERVER1_PORT_input" ).value = response.OSID_IPSERVER1_PORT;
+		document.getElementById( "OSID_IPSERVER1_CNN_input" ).value = response.OSID_IPSERVER1_CNN;
+		document.getElementById( "OSID_IPSERVER2_EN_input" ).value = response.OSID_IPSERVER2_EN;
+		document.getElementById( "OSID_IPSERVER2_MODE_input" ).value = response.OSID_IPSERVER2_MODE;
+		document.getElementById( "OSID_IPSERVER2_PORT_input" ).value = response.OSID_IPSERVER2_PORT;
+		document.getElementById( "OSID_IPSERVER2_CNN_input" ).value = response.OSID_IPSERVER2_CNN;
+		
 	}
 }
