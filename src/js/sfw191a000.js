@@ -197,6 +197,8 @@ function check_function( status, response, display_messages, on_loop ) {
  * false altrimenti.
  * 
  * @param string json_string string json da controllare.
+ * 
+ * @returns bool ritorna true se il testo passato è json, false altrimenti.
  */
 function try_json( json_string ) {
     try {
@@ -219,8 +221,9 @@ function try_json( json_string ) {
  * 
  * Funzione per formattare il mac address in hex
  * 
- * @param string mac stringa contente il mac address
- * @return string mac stringa formattata corretta del mac
+ * @param string mac stringa contente il mac address.
+ *
+ * @returns string mac stringa formattata corretta del mac.
  */
 
 export function format_mac( mac ){
@@ -252,7 +255,9 @@ export function format_mac( mac ){
 /**
  * Funzione seconds_to_dhms( seconds )
  * 
- * @param int seconds secondi trascorsi
+ * @param int seconds secondi trascorsi.
+ *
+ * @returns string ritorna la stringa contenente i giorni, ore, minuti, secondi (d-hh:mm:ss).
  */
 export function seconds_to_dhms( seconds ) {
 
@@ -270,9 +275,11 @@ export function seconds_to_dhms( seconds ) {
 }
 
 /**
- * Funzione jsdate_to_rfc3339( date )
+ * Funzione jsdate_to_rfc3339( d )
  * 
  * @param datetime d variabile javascript datetime della data da convertire.
+ *
+ * @returns string ritorna la stringa che contiene la data in rfc3339.
  */
 export function jsdate_to_rfc3339( d ) {
     
@@ -297,4 +304,25 @@ export function jsdate_to_rfc3339( d ) {
         pad(d.getMinutes()) + ":" +
         pad(d.getSeconds()); //+ 
         //timezoneOffset(d.getTimezoneOffset());
+}
+
+/**
+ * Funzione jsdate_to_readable( d )
+ * 
+ * @param datetime d variabile javascript datetime della data da convertire.
+ * 
+ * @returns string ritorna la stringa rappresentate la data in un formato leggibile.
+ */
+export function jsdate_to_readable( d ) {
+	return new Date( d * 1000 ).toLocaleDateString(
+		'en-gb',
+		{
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			hour:  "2-digit",
+			minute: "2-digit",
+		 	second: "2-digit"
+		}
+	);
 }
