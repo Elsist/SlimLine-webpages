@@ -9,7 +9,7 @@ import '../sass/index.scss';
  */
 
 import { menu_active, nav_burger, open_modal } from './utils';
-import { index_page, general_page, device_page } from './pages_functions';
+import { index_page, general_page, device_page, servers_page } from './pages_functions';
 
 // Set voce attiva nel menu e burger per dropdown.
 
@@ -30,4 +30,6 @@ if ( page_name == 'Index' ){
 	general_page ();
 } else if ( page_name == 'Devices' ){
 	device_page ();
+} else if ( page_name == 'Servers' ){
+	servers_page ();
 }

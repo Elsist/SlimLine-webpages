@@ -63,3 +63,13 @@
 .select:after {
 	border-color: $grey-dark !important;
 }
+
+/* Stili tag per inserire il testo on e off  in modo di non doverlo cambiare da js */
+
+.tag.automatic-tag.is-success:before {
+	content: "ENABLED";
+}
+
+.tag.automatic-tag.is-normal:before {
+	content: "DISABLED";
+}
