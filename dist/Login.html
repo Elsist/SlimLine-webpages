@@ -18,9 +18,9 @@
 					<!-- start panel -->
 						<div class="has-text-centered is-size-1"><ion-icon name="person-circle" ></ion-icon></div>
 						<div class="has-text-centered is-size-3 mb-4 has-text-weight-bold">Login</div>
-						<form id="loginform">
-							<input name="Username" class="input" type="text" placeholder="name" style="border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;">
-							<input name="Password" class="input" type="password" placeholder="password" style="border-top-right-radius: 0px;border-top-left-radius: 0px;">
+						<form id="loginform" method="GET" action="SysCgi/Login.cgi">
+							<input name="Username" class="input" type="text" placeholder="Name" style="border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;">
+							<input name="Password" class="input" type="password" placeholder="Password" style="border-top-right-radius: 0px;border-top-left-radius: 0px;">
 							<div class="buttons">
 								<button class="button has-text-weight-bold is-primary is-fullwidth mt-5" name="Action" value="Login">Enter</button>
 							</div>
@@ -45,7 +45,10 @@
 			// Define what happens on successful data submission
 			XHR.addEventListener( 'load', function(event) {
 				if (XHR.readyState != 4) return;
-				//alert(XHR.responseText);
+				if (XHR.status == 401) {
+					alert("Wrong credentials");
+					return;
+				}
 				window.location.href = XHR.responseURL;
 
 			} );
