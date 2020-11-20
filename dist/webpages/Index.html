@@ -70,6 +70,7 @@
 				<li><a href="Index.html" class="has-text-grey"> <ion-icon name="home-outline" size="" class="pr-4 is-size-5"></ion-icon> <span>Dashboard</span></a></li>
 				<li><a href="General.html" class="has-text-grey"> <ion-icon name="build-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>General</span></a></li>
 				<li><a href="Devices.html" class="has-text-grey"> <ion-icon name="bulb-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Devices</span></a></li>
+				<li><a href="Servers.html" class="has-text-grey"> <ion-icon name="server-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Servers</span></a></li>
 				<li><a href="Securety.html" class="has-text-grey"> <ion-icon name="shield-outline" size="medium" class="pr-4 is-size-5"></ion-icon> <span>Securety</span></a></li>
 				</ul>
 			</aside>
@@ -175,7 +176,15 @@
 								TBack load: <span id="OSID_PLC_TBACK_LOAD_label" class="has-text-weight-bold"> - </span>%
 							</div>
 							<div class="column">
-								<progress id="OSID_PLC_TBACK_LOAD_progress" class="progress is-medium is-success" max="150"></progress>
+								<progress id="OSID_PLC_TBACK_LOAD_progress" class="progress is-medium is-success" max="200"></progress>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-one-third">
+								Healt status: <span id="OSID_PLC_ERR_LOAD_label" class="has-text-weight-bold"> - </span>%
+							</div>
+							<div class="column">
+								<progress id="OSID_PLC_ERR_LOAD_progress" class="progress is-medium is-success" max="200"></progress>
 							</div>
 						</div>
 					</div>
