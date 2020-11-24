@@ -25,11 +25,11 @@ document.querySelectorAll("[data-toggle='modal']").forEach( function( elem ) { e
 var page_name = window.location.pathname.split('/')[2].split(".")[0];
 
 if ( page_name == 'Index' ){
-	index_page ();
-}if ( page_name == 'General' ){
-	general_page ();
+	index_page();
+} if ( page_name == 'General' ){
+	general_page();
 } else if ( page_name == 'Devices' ){
-	device_page ();
+	device_page();
 } else if ( page_name == 'Servers' ){
-	servers_page ();
+	servers_page();
 }
