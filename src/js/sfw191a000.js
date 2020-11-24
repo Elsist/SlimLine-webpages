@@ -106,6 +106,8 @@ export function send_data( form_element, data_page, fct ) {
 
     const XHR = new XMLHttpRequest();
 
+	XHR.timeout = 2000;
+
     let urlEncodedData = "",
         urlEncodedDataPairs = [],
         name;
@@ -124,15 +126,22 @@ export function send_data( form_element, data_page, fct ) {
     // the '+' character; matches the behaviour of browser form submissions.
     urlEncodedData = urlEncodedDataPairs.join( '&' ).replace( /%20/g, '+' );
 
-    // Define what happens on successful data submission
-    XHR.addEventListener( 'load', function(event) {
-        check_function( XHR.readyState, XHR.responseText, true, false );
-    } );
-
     // Define what happens in case of error
     XHR.addEventListener( 'error', function(event) {
-        alert( 'Oops! Something went wrong.' );
-    } );
+		clearInterval( window._els_interval );
+		notie.alert( { type: 'error', stay: true, text: 'Error in get ! Please reload the page.', position: 'top' } );
+		return;
+	} );
+	
+	// Define what happens in case of timeout
+	XHR.addEventListener('timeout', () => {
+		console.error("Timeout!!");
+	});
+
+	// Define what happens on successful data submission
+	XHR.addEventListener( 'load', function(event) {
+		check_function( XHR.readyState, XHR.responseText, true, false );
+	} );
 
     // Set up our request
     XHR.open( 'POST', data_page );
@@ -167,7 +176,11 @@ function check_function( status, response, display_messages, on_loop ) {
 	semaforo = false;
 
 	var response = try_json( response );
-	if (!response) location.reload();
+	if (!response) {
+		clearInterval( window._els_interval );
+		notie.alert( { type: 'error', stay: true, text: 'Error in response ! Please reload the page.', position: 'top' } );
+		return;
+	}
 
 	// Log
 

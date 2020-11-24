@@ -12,7 +12,8 @@ import { read_data, send_data, data_page, seconds_to_dhms, jsdate_to_rfc3339, js
 export function index_page() {
 
 	read_data( data_page, false, display_value );
-	setInterval(function(){ read_data( data_page, true, display_value ); }, 1000);
+
+	window._els_interval = setInterval(function(){ read_data( data_page, true, display_value ); }, 1000);	
 
 	// Funzione di visualizzazione variabili.
 
