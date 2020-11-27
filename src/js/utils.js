@@ -39,7 +39,7 @@ export function menu_active() {
 	for (var i = 0; i < anchor.length; i++) {
 		if(anchor[i].getAttribute('href', 2) == current) {
 			anchor[i].className = "is-active";
-	  }
+	  	}
 	}
 }
 
