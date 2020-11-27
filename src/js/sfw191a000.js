@@ -57,17 +57,33 @@ export function read_data( page_data, on_loop, fct ) {
 
     var Rnd=Math.random();
 
-    // Invio richiesta allo script php su server di gestione. Il nome metodo "GET" in maiuscolo, alcuni browser sono case sensitive.
+	// XHR parametsrs.
 
-    if (XHR != null) {
-        XHR.open('GET', page_data+'?Rnd='+escape(Rnd), true);
-        XHR.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+	XHR.open('GET', page_data+'?Rnd='+escape(Rnd), true);
+	XHR.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+	XHR.timeout = 2000;
 
-        // Definisco funzione di gestione risposta ed invio richiesta. Nel send occorre sempre specificare "null".
+	// Define what happens in case of error
 
-        XHR.onreadystatechange = function () { check_function( XHR.readyState, XHR.responseText, false, on_loop ); };
-        XHR.send(null);
-    }
+	XHR.addEventListener( 'error', function(event) {
+		clearInterval( window._els_interval );
+		notie.alert( { type: 'error', stay: true, text: 'Error in get ! Please reload the page.', position: 'top' } );
+		return;
+	} );
+
+	// Define what happens in case of error
+	
+	XHR.addEventListener( 'timeout', function(event) {
+		clearInterval( window._els_interval );
+		notie.alert( { type: 'error', stay: true, text: 'Timeout in get ! Please reload the page.', position: 'top' } );
+		return;
+	} );
+
+	// Definisco funzione di gestione risposta ed invio richiesta. Nel send occorre sempre specificare "null".
+
+	XHR.onreadystatechange = function () { check_function( XHR.readyState, XHR.status, XHR.responseText, false, on_loop ); };
+	XHR.send(null);
+
 }
 
 /**
@@ -91,13 +107,15 @@ export function send_data( form_element, data_page, fct ) {
 
     // Loop per tutti gli oggetti del form.
     
-    var i;
-    for (i = 0; i < form_element.length ;i++) {
+	var i;
+	
+    for ( i = 0; i < form_element.length ;i++ ) {
+
 		if ( form_element.elements[i].type == "submit" ) continue; // Escludo il botton dalle variabili inviate nel form.
+
 		// Se sull'input ho segnato data-plcforma="epoch" allora converto la data in epoch.
 		else if ( form_element.elements[i].dataset.plcformat == "epoch" ) {
-			alert('DemoDemo');
-			data[form_element.elements[i].name] = Date.parse( form_element.elements[i].value )/1000;
+			data[form_element.elements[i].name] = Date.parse( form_element.elements[i].value ) / 1000;
 		}
     	else data[form_element.elements[i].name] = form_element.elements[i].value;
     }
@@ -106,50 +124,46 @@ export function send_data( form_element, data_page, fct ) {
 
     const XHR = new XMLHttpRequest();
 
-	XHR.timeout = 2000;
-
-    let urlEncodedData = "",
+    let urlEncodedData = "", 
         urlEncodedDataPairs = [],
         name;
 
-    // Turn the data object into an array of URL-encoded key/value pairs.
+	// Turn the data object into an array of URL-encoded key/value pairs.
+	
     for( name in data ) {
         urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
-    }
+	}
+	
+	// XHR parameters.
+
+	XHR.open( 'POST', data_page );	
+	XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded;charset=utf-8' );
 
 	// Log.
 
 	console.log("Data send:");
 	console.log(urlEncodedDataPairs);
 
-    // Combine the pairs into a single string and replace all %-encoded spaces to 
-    // the '+' character; matches the behaviour of browser form submissions.
+	// Combine the pairs into a single string and replace all %-encoded spaces to the '+' character; matches the behaviour of browser form submissions.
+	
     urlEncodedData = urlEncodedDataPairs.join( '&' ).replace( /%20/g, '+' );
 
-    // Define what happens in case of error
+	// Define what happens in case of error.
+	
     XHR.addEventListener( 'error', function(event) {
 		clearInterval( window._els_interval );
-		notie.alert( { type: 'error', stay: true, text: 'Error in get ! Please reload the page.', position: 'top' } );
+		notie.alert( { type: 'error', stay: true, text: 'Error in POST ! Please reload the page.', position: 'top' } );
 		return;
 	} );
 	
-	// Define what happens in case of timeout
-	XHR.addEventListener('timeout', () => {
-		console.error("Timeout!!");
-	});
-
 	// Define what happens on successful data submission
+
 	XHR.addEventListener( 'load', function(event) {
-		check_function( XHR.readyState, XHR.responseText, true, false );
+		check_function( XHR.readyState, XHR.status, XHR.responseText, true, false );
 	} );
 
-    // Set up our request
-    XHR.open( 'POST', data_page );
-
-    // Add the required HTTP header for form data POST requests
-    XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded;charset=utf-8' );
-
-    // Finally, send our data.
+	// Finally, send our data.
+	
     XHR.send( urlEncodedData );
 }
 
@@ -160,16 +174,22 @@ export function send_data( form_element, data_page, fct ) {
  * In caso si possa procedere chiama la funzione di valorizzazione variabili definita nella pagina,
  * che è stata passata per indirizzo su "fct_address" passando ad essa il corpo di della risposta.
  * 
- * @param int status codice di risposta.
+ * @param int readystate codice di risposta readystate.
+ * @param int status codice di risposta status.
  * @param string response stringa di risposta.
  * @param bool display_messages varabile booleana che mi indica se stampare i messaggi o meno.
  * @param bool on_loop varabile booleana mi indica se chiamata a tempo (serve per skippare gli input su refresh on interval).
  */
-function check_function( status, response, display_messages, on_loop ) {
+function check_function( readystate, status, response, display_messages, on_loop ) {
 
     // Se il codice di risposta è diverso da 4 allora non faccio nulla.
 
-    if ( 4 != status ) return;
+	if ( 4 != readystate ) return;
+	else if (4 != readystate && 200 != status){
+		clearInterval( window._els_interval );
+		notie.alert( { type: 'error', stay: true, text: 'Error in response ! Please reload the page.', position: 'top' } );
+		return;
+	}
 
     // Controllo semaforo.
 
@@ -178,7 +198,7 @@ function check_function( status, response, display_messages, on_loop ) {
 	var response = try_json( response );
 	if (!response) {
 		clearInterval( window._els_interval );
-		notie.alert( { type: 'error', stay: true, text: 'Error in response ! Please reload the page.', position: 'top' } );
+		notie.alert( { type: 'error', stay: true, text: 'Response is not JSON ! Please reload the page.', position: 'top' } );
 		return;
 	}
 
@@ -213,7 +233,7 @@ function check_function( status, response, display_messages, on_loop ) {
  * 
  * @returns bool ritorna true se il testo passato è json, false altrimenti.
  */
-function try_json( json_string ) {
+export function try_json( json_string ) {
     try {
         var o = JSON.parse(json_string);
 
