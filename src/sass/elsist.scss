@@ -6,6 +6,13 @@
 	@media screen and (min-width: 1023px) {
 		margin-left: 200px; // 200 - 12 (pixel di padding di default sulle colonne)
 	}
+
+	// Stile per il box dei logs.
+
+	#logs-box{
+		height: 500px;
+		overflow-y: scroll;
+	}
 }
 
 .els-sidebar{
@@ -22,14 +29,8 @@
 		width: 100%;
 	}
 
-	/* Stile icona outline */
-
-	ion-icon {
-		--ionicon-stroke-width: 50px;
-	}
-
 	/* Icona colorata su menu attivo */
-	a.is-active ion-icon {
+	a.is-active svg {
 		color: #009933;
 	}
 }
