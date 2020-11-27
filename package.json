@@ -9,7 +9,6 @@
   "author": "Gianluca Raftacco",
   "license": "ISC",
   "dependencies": {
-    "ionicons": "^5.2.3",
     "notie": "^4.3.1",
     "pixi.js": "^5.3.3",
     "terser": "^5.3.7"
