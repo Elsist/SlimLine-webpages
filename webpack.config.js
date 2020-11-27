@@ -5,6 +5,7 @@ module.exports = {
 	entry: {
 		bundle: './src/js/index.js',
 		iostatus: './src/js/iostatus.js',
+		logs: './src/js/logs.js',
 	},
 	output: {
 		filename: '[name].js',
