@@ -3,15 +3,20 @@
  * 
  * @programmer Gianluca Raftacco
  */
-
+ 
 /**
- * Pixi.js installato con node
- *
- * Import customizzato di pixi per ridurre le dimensioni
+ * Importazioni
  */
 
-var PIXI = require('pixi.js')
+var PIXI = require('pixi.js'); // Installato con node.
+import { menu_active, nav_burger } from './utils';
 
+// Menu functions.
+
+menu_active();
+document.addEventListener('DOMContentLoaded', nav_burger() );
+
+// Start log.
 
 console.log("%cElsist SRL - Hello ! You can debug comunication by setting 'debug_mode=true;'", "background: #009933; color: #fff; padding: 5px 5px; font-weight: bold;");
 
@@ -51,6 +56,7 @@ const app = new PIXI.Application({
 	height: 800,
 	width: 1500,
 });
+
 
 document.getElementById("e-pixi").appendChild(app.view);
 
@@ -343,8 +349,8 @@ function waiting_windows(){
 		
 		// Leggo vecchia posizione
 		
-		old_pos_x = cards_draw[card_obj.address].getChildByName("input_led_"+i).position.x;
-		old_pos_y = cards_draw[card_obj.address].getChildByName("input_led_"+i).position.y;
+		let old_pos_x = cards_draw[card_obj.address].getChildByName("input_led_"+i).position.x;
+		let old_pos_y = cards_draw[card_obj.address].getChildByName("input_led_"+i).position.y;
 		
 		// Rimuovo il led
 		
@@ -375,8 +381,8 @@ function waiting_windows(){
 		
 		// Leggo vecchia posizione
 
-		old_pos_x = cards_draw[card_obj.address].getChildByName("output_led_"+i).position.x;
-		old_pos_y = cards_draw[card_obj.address].getChildByName("output_led_"+i).position.y;
+		let old_pos_x = cards_draw[card_obj.address].getChildByName("output_led_"+i).position.x;
+		let old_pos_y = cards_draw[card_obj.address].getChildByName("output_led_"+i).position.y;
 
 		// Rimuovo il led
 
@@ -548,3 +554,42 @@ function waiting_windows(){
 
 	}	
 }
+
+/**
+ * Gestione convas responsive
+ */
+/*
+document.body.onresize = () => { scaleToWindow() };
+scaleToWindow = function() {
+    const canvas = app.view;
+	let scaleX, scaleY, scale, center;
+	
+	var contentElement = document.getElementById("e-pixi");
+
+    scaleX = contentElement.clientWidth / canvas.offsetWidth;
+    scaleY = contentElement.clientHeight / canvas.offsetHeight;
+    scale = Math.min(scaleX, scaleY, 1);
+    canvas.style.transformOrigin = "0 0";
+    canvas.style.transform = "scale(" + scale + ")";
+
+	center = "horizontally";
+    let margin;
+
+	margin = (window.innerWidth - canvas.offsetWidth * scale) / 2;
+	canvas.style .marginTop = 0 + "px";canvas.style .marginBottom = 0 + "px";
+
+	//canvas.style .marginLeft = margin + "px";canvas.style .marginRight = margin + "px";
+
+	canvas.style.paddingLeft = 0 + "px";
+	canvas.style.paddingRight  = 0 + "px";
+	canvas.style.paddingTop  = 0 + "px";
+	canvas.style.paddingBottom = 0 + "px";
+    canvas.style.display = "-webkit-inline-box";
+    return scale;
+}
+scaleToWindow()
+
+window.addEventListener('wheel', e => {
+    e.preventDefault();
+}, { passive: false })
+*/
