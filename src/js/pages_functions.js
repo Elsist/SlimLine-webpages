@@ -33,7 +33,23 @@ export function index_page() {
 		document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TBACK_LOAD_label" ).innerHTML = response.OSID_PLC_TBACK_LOAD;
 		document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).value = document.getElementById( "OSID_PLC_ERR_LOAD_label" ).innerHTML = response.OSID_PLC_ERR_LOAD;
 		
-		if ( response.OSID_PLC_TFAST_LOAD > 50 ) {
+		if ( response.OSID_PLC_MALLOC_USE > 70 ) {
+			document.getElementById( "OSID_PLC_MALLOC_USE_progress" ).classList.remove("is-success");
+			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.add("is-danger");
+		} else {
+			document.getElementById( "OSID_PLC_MALLOC_USE_progress" ).classList.remove("is-danger");
+			document.getElementById( "OSID_PLC_MALLOC_USE_progress" ).classList.add("is-success");
+		}
+
+		if ( response.OSID_SYSTEM_RMALLOC_USE > 70 ) {
+			document.getElementById( "OSID_SYSTEM_RMALLOC_USE_progress" ).classList.remove("is-success");
+			document.getElementById( "OSID_SYSTEM_RMALLOC_USE_progress" ).classList.add("is-danger");
+		} else {
+			document.getElementById( "OSID_SYSTEM_RMALLOC_USE_progress" ).classList.remove("is-danger");
+			document.getElementById( "OSID_SYSTEM_RMALLOC_USE_progress" ).classList.add("is-success");
+		}
+
+		if ( response.OSID_PLC_TFAST_LOAD > 70 ) {
 			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.remove("is-success");
 			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.add("is-danger");
 		} else {
@@ -41,7 +57,7 @@ export function index_page() {
 			document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).classList.add("is-success");
 		}
 
-		if ( response.OSID_PLC_TSLOW_LOAD > 50 ) {
+		if ( response.OSID_PLC_TSLOW_LOAD > 70 ) {
 			document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).classList.remove("is-success");
 			document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).classList.add("is-danger");
 		} else {
@@ -49,7 +65,7 @@ export function index_page() {
 			document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).classList.add("is-success");
 		}
 
-		if ( response.OSID_PLC_TBACK_LOAD > 100 ) {
+		if ( response.OSID_PLC_TBACK_LOAD > 70 ) {
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.remove("is-success");
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.add("is-danger");
 		} else {
@@ -57,7 +73,7 @@ export function index_page() {
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.add("is-success");
 		}
 
-		if ( response.OSID_PLC_ERR_LOAD > 50 ) {
+		if ( response.OSID_PLC_ERR_LOAD < 30 ) {
 			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.remove("is-success");
 			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.add("is-danger");
 		} else {
