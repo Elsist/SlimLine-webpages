@@ -31,7 +31,7 @@ export function index_page() {
 		document.getElementById( "OSID_PLC_TFAST_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TFAST_LOAD_label" ).innerHTML = response.OSID_PLC_TFAST_LOAD;
 		document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TSLOW_LOAD_label" ).innerHTML = response.OSID_PLC_TSLOW_LOAD;
 		document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TBACK_LOAD_label" ).innerHTML = response.OSID_PLC_TBACK_LOAD;
-		document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).value = document.getElementById( "OSID_PLC_ERR_LOAD_label" ).innerHTML = response.OSID_PLC_ERR_LOAD;
+		document.getElementById( "OSID_PLC_HEALTH_progress" ).value = document.getElementById( "OSID_PLC_HEALTH_label" ).innerHTML = response.OSID_PLC_HEALTH;
 		
 		if ( response.OSID_PLC_MALLOC_USE > 70 ) {
 			document.getElementById( "OSID_PLC_MALLOC_USE_progress" ).classList.remove("is-success");
@@ -73,12 +73,12 @@ export function index_page() {
 			document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).classList.add("is-success");
 		}
 
-		if ( response.OSID_PLC_ERR_LOAD < 30 ) {
-			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.remove("is-success");
-			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.add("is-danger");
+		if ( response.OSID_PLC_HEALTH < 30 ) {
+			document.getElementById( "OSID_PLC_HEALTH_progress" ).classList.remove("is-success");
+			document.getElementById( "OSID_PLC_HEALTH_progress" ).classList.add("is-danger");
 		} else {
-			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.remove("is-danger");
-			document.getElementById( "OSID_PLC_ERR_LOAD_progress" ).classList.add("is-success");
+			document.getElementById( "OSID_PLC_HEALTH_progress" ).classList.remove("is-danger");
+			document.getElementById( "OSID_PLC_HEALTH_progress" ).classList.add("is-success");
 		}
 
 		// PLC Informations.
