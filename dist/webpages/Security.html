@@ -42,8 +42,15 @@
 			</div>
 			<div id="navbarBasicExample" class="navbar-menu">
 				<div class="navbar-start is-hidden-desktop">
-					<a class="navbar-item">	Home </a>
-					<a class="navbar-item"> Documentation </a>
+					<a href="Index.html" class="navbar-item"> Dashboard </a>
+					<a href="General.html" class="navbar-item"> General </a>
+					<a href="Devices.html" class="navbar-item"> Devices </a>
+					<a href="Servers.html" class="navbar-item"> Servers </a>
+					<a href="Protocols.html" class="navbar-item"> Protocols </a>
+					<a href="Security.html" class="navbar-item"> Security </a>
+					<a href="UserInfos.html" class="navbar-item"> UserInfos </a>
+					<a href="IOStatus.html" class="navbar-item"> IO Status </a>
+					<a href="Logs.html" class="navbar-item"> Logs </a>
 				</div>
 				<!-- start navbar user desktop-->
 				<div class="navbar-end is-hidden-touch">
@@ -53,9 +60,10 @@
 						<ion-icon name="person-circle" size="large" class="pl-2"></ion-icon>
 					  </a>
 					  <div class="navbar-dropdown is-right">
-						<a class="navbar-item has-text-dark">
-						  Logout
-						</a>
+						<form action="/SysCgi/Login.cgi" method="post" name="login" id="logout-form">
+							<input type="hidden" name="Action" value="Logout">
+							<a class="navbar-item has-text-dark" href="javascript:{}" onclick="document.getElementById('logout-form').submit();"> Logout </a>
+						</form>
 					  </div>
 					</div>
 				</div>
@@ -113,6 +121,12 @@
 						<a href="IOStatus.html" class="has-text-grey">
 							<svg xmlns='http://www.w3.org/2000/svg' class='pr-4' style="height:20px; vertical-align:middle;" viewBox='0 0 512 512'><title>Pulse</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M48 320h64l64-256 64 384 64-224 32 96h64'/><circle cx='432' cy='320' r='32' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
 							<span>IO Status</span>
+						</a>
+					</li>
+					<li>
+						<a href="Logs.html" class="has-text-grey">
+							<svg xmlns='http://www.w3.org/2000/svg' class='pr-4' style="height:20px; vertical-align:middle;" viewBox='0 0 512 512'><title>Bug</title><path d='M370 378c28.89 23.52 46 46.07 46 86M142 378c-28.89 23.52-46 46.06-46 86M384 208c28.89-23.52 32-56.07 32-96M128 206c-28.89-23.52-32-54.06-32-94M464 288.13h-80M128 288.13H48M256 192v256' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path d='M256 448h0c-70.4 0-128-57.6-128-128v-96.07c0-65.07 57.6-96 128-96h0c70.4 0 128 25.6 128 96V320c0 70.4-57.6 128-128 128z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path d='M179.43 143.52a49.08 49.08 0 01-3.43-15.73A80 80 0 01255.79 48h.42A80 80 0 01336 127.79a41.91 41.91 0 01-3.12 14.3' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+							<span>Logs</span>
 						</a>
 					</li>
 				</ul>
@@ -577,8 +591,15 @@
 				</div>
 			</div>
 			<!-- end SAVE -->
-			<!-- mainbar end -->
 			</form>
+			<div class="is-size-7 has-text-grey">
+				<p> WebPages version: Mdp020d600 </p>
+				<a href="www.elsist.biz" target="_blank"> www.elsist.biz </a> /
+				<a href="support.elsist.biz" target="_blank"> support.elsist.biz </a> /
+				<a href="https://support.elsist.biz/articoli/indice-manuale-programmazione-iec-61131-3/" target="_blank"> IEC 61131-3 Programming manual </a> /
+				(+39) 0142-451987
+			</div>
+			<!-- mainbar end -->
 		</section>
 		<script type="module" src="../scripts/js/bundle.js"></script>
 	</body>
