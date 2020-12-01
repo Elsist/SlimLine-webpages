@@ -55,11 +55,9 @@ export function read_data( page_data, on_loop, fct ) {
      * che non viene mai memorizzato in cache.
     */
 
-    var Rnd=Math.random();
-
 	// XHR parametsrs.
 
-	XHR.open('GET', page_data+'?Rnd='+escape(Rnd), true);
+	XHR.open('GET', page_data, true);
 	XHR.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
 	XHR.timeout = 2000;
 
@@ -358,4 +356,48 @@ export function jsdate_to_readable( d ) {
 		 	second: "2-digit"
 		}
 	);
+}
+
+/**
+ * Funzione jsdate_to_logsdate( d )
+ * 
+ * @param datetime d variabile javascript datetime della data da convertire.
+ * 
+ * @returns string ritorna la stringa rappresentate la data in un formato leggibile.
+ */
+export function jsdate_to_logsdate( d ) {
+
+	var date = new Date( d );
+	
+	var formatted_date = date.toLocaleDateString(
+		'en-gb',
+		{
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+			hour:  "2-digit",
+			minute: "2-digit",
+		 	second: "2-digit"
+		}
+	);
+
+	var milliseconds = date.getMilliseconds();
+
+	return formatted_date + '.' + milliseconds.toString().padStart(3, '0');
+}
+
+/**
+ * Funzione milliseconds_to_hhmmss( s )
+ * 
+ * @param int s millisecondi in cui il log si è verificato. 
+ */
+export function milliseconds_to_hhmmss( ms ) {
+	var s;
+	s = (s - ms) / 1000;
+	var secs = s % 60;
+	s = (s - secs) / 60;
+	var mins = s % 60;
+	var hrs = (s - mins) / 60;
+  
+	return hrs + ':' + mins + ':' + secs + '.' + ms;
 }
