@@ -10,6 +10,8 @@
 
 var PIXI = require('pixi.js'); // Installato con node.
 import { menu_active, nav_burger } from './utils';
+import { try_json } from './sfw191a000';
+import notie from '../../node_modules/notie';
 
 // Menu functions.
 
@@ -155,20 +157,16 @@ var card_ios =[	{Name:"MPS054****", Regex: "MPS054([A-Z0-9]{4})", Input:2, Outpu
  * Inizio esecuzione
  */
 
-// Imposto l'interval sulla funzione che leggerà gli io delle schede, la funzione viese eseguita solo se il sistema è stato composto e non è occupato
-
-// var system_clock = setInterval( function(){ if (in_socket == false) system_loop(); }, 1000);
-
-// Loop interno di pixi
-
-/*app.ticker.add(() => {
-}); */
-
-
 read_infos( "IOStatus.htm");
-setInterval(function(){ read_infos( "IOStatus.htm"); }, 2000);
+window._els_interval = setInterval(function(){ read_infos( "IOStatus.htm"); }, 2000);
 
-
+/**
+ * Funzione read_infos( page_data )
+ * 
+ * Funzione che comunica in lettura con il PLC, chiama la system_update ogni lettura con successo.
+ * 
+ * @param string page_data 
+ */
 function read_infos( page_data ) {
 
 	// Variabile semaforica.
@@ -204,7 +202,15 @@ function read_infos( page_data ) {
     }
 }
 
-
+/**
+ * Funzione system_update( status, response )
+ * 
+ * Funzione di aggiornamento struttura dati del sistema.
+ * Chiamerà la draw_card o update_card a seconda in di in che punto dell'esecuzione mi trovo.
+ * 
+ * @param int status stato della risposta.
+ * @param string response stringa di risposta. 
+ */
 function system_update( status, response ) {
 
 	// Test iniziali
@@ -218,7 +224,11 @@ function system_update( status, response ) {
 	semaforo = false;
 
 	var response = try_json( response );
-	if (!response) location.reload();
+	if ( !response ) {
+		clearInterval( window._els_interval );
+		notie.alert( { type: 'error', stay: true, text: 'Response is not JSON ! Please reload the page.', position: 'top' } );
+		return;
+	}
 
 	// Log iniziale
 
@@ -288,24 +298,12 @@ function system_update( status, response ) {
 
 }
 
-
-function try_json( json_string ) {
-    try {
-        var o = JSON.parse(json_string);
-        if (o && typeof o === "object") { return o; }
-    }
-    catch (e) { }
-    return false;
-};
-
-
 /**
  * Funzione di visualizzazione waiting
  *
  * Questa funzione rimuove tutte le schede se disegnate 
  * e se non ancora disegnato presenta gli oggetti di attesa.
  */
-
 function waiting_windows(){
 
 	// Controllo se ho già disegnato la voce di stop. Se si esco.
@@ -340,7 +338,6 @@ function waiting_windows(){
  * 
  * @param object card_obj oggetto scheda connessa. card_name (nome scheda), input (valore degli input), output(valore degli output).
  */
-
  function update_card( card_obj ) {
 	 
 	/* Aggiunta leds Inputs */
@@ -416,7 +413,6 @@ function waiting_windows(){
  * 
  * @param obj card_obj oggetto alla scheda connessa. (nome scheda), input (valore degli input), output(valore degli output)
  */
-
  function draw_card( card_obj ) {
 
 	// Rimuovo grafiche di stato in stop
