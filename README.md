@@ -1,5 +1,7 @@
 # Pagine web SlimLine
 
+[![Slimline Firmware](https://img.shields.io/badge/firmware-%3E%3Dsfw198d030-%23009933)](https://support.elsist.biz/note-di-rilascio-per-il-firmare-delle-cpu-swf198/)
+
 Queste sono le pagine web per i dispositivi SlimLine.
 All'interno del pacchetto sono contenuti tutti i file necessari allo sviluppo.
 
@@ -165,4 +167,4 @@ L'invio del form deve essere disabilitato dal'HTML.
 - **on_loop** variabile booleana che indica se la funzione è stata chiamata su un interval, deve essere impostata manualmente.
 - **display_value** funzione di callback dopo read_data e set_data. In questa funzione c'è scritto come valorizzare i campi della pagina con i dati ricevuti.
 
-read_data( data_page, on_loop, display_value );
+	read_data( data_page, on_loop, display_value );
