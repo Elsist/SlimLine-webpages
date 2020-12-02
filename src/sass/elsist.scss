@@ -13,7 +13,29 @@
 		height: 500px;
 		overflow-y: scroll;
 		font-family: Courier, monospace;
+
+		// Aggiungo spaziatura a sinistra e icona da css, fatto da css per far in modo che clipboardjs non copi le icone e abbiano tutte lo stesso spazio.
+
+		span::before{
+			margin-right: 5px;
+		}
+		.has-text-success::before{
+			content: "\2691 ";
+		}
+		.has-text-warning::before{
+			content: "\26A0 ";
+		}
+		.has-text-danger::before{
+			content: "\2716 ";
+		}
+
 	}
+
+	//Progress bars.
+
+	progress#OSID_PLC_HEALTH_progress[value]::-moz-progress-bar { background: $red; }
+	progress#OSID_PLC_HEALTH_progress[value]::-webkit-progress-bar { background: $red; }
+
 }
 
 .els-sidebar{

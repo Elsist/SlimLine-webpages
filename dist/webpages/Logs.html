@@ -134,22 +134,30 @@
 		<!-- sidebar end -->
 		<section class="section" id="main">
 			<!-- mainbar start -->
-			<!-- start SYSUSET settings -->
+			<!-- start TOOLBAR settings -->
 			<div class="box is-shadowless has-background-white">
-				<div class="columns is-vcentered">
+				<div class="columns">
 					<div class="column">
-						<button id="start-button" class="button has-text-weight-bold is-success">
-							<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; fill:#ffffff;' viewBox='0 0 512 512'><title>Play</title><path d='M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/></svg>
-							<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; fill:#ffffff;' viewBox='0 0 512 512'><title>Pause</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M176 96h16v320h-16zM320 96h16v320h-16z'/></svg>
+						<button id="start-button" class="button has-text-weight-bold is-success is-fullwidth">
+							<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; color:#ffffff;' viewBox='0 0 512 512'><title>Play</title><path d='M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/></svg>
+							<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; color:#ffffff;' viewBox='0 0 512 512'><title>Pause</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M176 96h16v320h-16zM320 96h16v320h-16z'/></svg>
 						</button>
-						<button id="clear-button" class="button is-danger has-text-weight-bold">
-							<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; fill:#ffffff;' viewBox='0 0 512 512'><title>Trash</title><path d='M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32' d='M80 112h352'/><path d='M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
-						</button>
-						<button id="copy-button" class="button has-background-dark has-text-weight-bold copy-button" data-clipboard-target="#logs-box">
+					</div>
+					<div class="column">
+						<button id="copy-button" class="button has-background-grey-lighter has-text-weight-bold copy-button is-fullwidth" data-clipboard-target="#logs-box">
 							<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; color:#ffffff;' viewBox='0 0 512 512'><title>Copy</title><rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/><path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
 						</button>
 					</div>
+					<div class="column">
+						<button id="clear-button" class="button is-danger has-text-weight-bold is-fullwidth">
+							<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; color:#ffffff;' viewBox='0 0 512 512'><title>Trash</title><path d='M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32' d='M80 112h352'/><path d='M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>
+						</button>
+					</div>
 				</div>
+			</div>
+			<!-- end TOOLBAR settings -->
+			<!-- start LOGS BOX settings -->
+			<div class="box is-shadowless has-background-white">
 				<div class="columns is-vcentered">
 					<div class="column">
 						<div id="logs-box" class="is-size-7 has-text-weight-bold">
@@ -157,16 +165,16 @@
 					</div>
 				</div>
 			</div>
-			<!-- end SYSUSET settings -->
+			<!-- end LOGS BOX settings -->
+			<div class="is-size-7 has-text-grey">
+					<p> WebPages version: Mdp020d600 </p>
+					<a href="//www\.elsist\.biz" target="_blank"> www.elsist.biz </a> /
+					<a href="//support\.elsist\.biz" target="_blank"> support.elsist.biz </a> /
+					<a href="//support\.elsist\.biz/articoli/indice-manuale-programmazione-iec-61131-3/" target="_blank"> IEC 61131-3 Programming manual </a> /
+					(+39) 0142-451987
+				</div>
+			<script type="module" src="../scripts/js/logs.js"></script>
 			<!-- mainbar end -->
 		</section>
-		<div class="is-size-7 has-text-grey">
-				<p> WebPages version: Mdp020d600 </p>
-				<a href="//www\.elsist\.biz" target="_blank"> www.elsist.biz </a> /
-				<a href="//support\.elsist\.biz" target="_blank"> support.elsist.biz </a> /
-				<a href="//support\.elsist\.biz/articoli/indice-manuale-programmazione-iec-61131-3/" target="_blank"> IEC 61131-3 Programming manual </a> /
-				(+39) 0142-451987
-			</div>
-		<script type="module" src="../scripts/js/logs.js"></script>
 	</body>
 </html>

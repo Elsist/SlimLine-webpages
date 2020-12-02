@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', nav_burger() );
 // ClipBoard JS init.
 
 var clipboard = new ClipBoard('.copy-button');
+clipboard.on('success', function(e) { e.clearSelection(); });
 
 /**
  * Dichiarazione variabili per l'app
@@ -47,6 +48,7 @@ clear_button.addEventListener('click', function(){ text_area.innerHTML = ''; } )
 read_logs();
 loop();
 
+
 /**
  * Funzione start_loop()
  * 
@@ -60,11 +62,11 @@ function loop() {
 		clearInterval( window._els_interval ); window._els_interval = false;
 		//start_button.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; fill:#ffffff;' viewBox='0 0 512 512'><title>Play</title><path d='M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/></svg>";
 		start_button.classList.remove( 'is-success' );
-		start_button.classList.add( 'is-dark' );
+		start_button.classList.add( 'has-background-grey-lighter' );
 	} else {
 		window._els_interval = setInterval(function(){ read_logs(); }, 2000);
 		//start_button.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' style='height: 25px; fill:#ffffff;' viewBox='0 0 512 512'><title>Pause</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M176 96h16v320h-16zM320 96h16v320h-16z'/></svg>";
-		start_button.classList.remove( 'is-dark' );
+		start_button.classList.remove( 'has-background-grey-lighter' );
 		start_button.classList.add( 'is-success' );
 	}
 
@@ -178,18 +180,23 @@ function check_print_logs( readystate, status, response ){
 		// Type: 0 warning, 1 Error, 2 Eventi
 
 		let log_class;
+		let log_icon;
 		switch ( element.Type ) {
 			case 0:
 				log_class = 'has-text-warning';
+				log_icon = '&#9888;';
 				break;
 			case 1:
 				log_class = 'has-text-danger';
+				log_icon = '&#10006;';
 				break;
 			case 2:
-				log_class = 'has-text-link';
+				log_class = 'has-text-success';
+				log_icon = '&#9873;';
 				break;
 			default:
 				log_class = 'has-text-dark';
+				log_icon = '&#9873;';
 		}
 
 		// Pulizia log vecchi.
