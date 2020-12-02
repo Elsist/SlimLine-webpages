@@ -59,7 +59,7 @@ export function read_data( page_data, on_loop, fct ) {
 
 	XHR.open('GET', page_data, true);
 	XHR.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-	XHR.timeout = 5000;
+	XHR.timeout = 50000;
 
 	// Define what happens in case of error
 
