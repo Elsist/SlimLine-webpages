@@ -32,6 +32,7 @@ export function index_page() {
 		document.getElementById( "OSID_PLC_TSLOW_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TSLOW_LOAD_label" ).innerHTML = response.OSID_PLC_TSLOW_LOAD;
 		document.getElementById( "OSID_PLC_TBACK_LOAD_progress" ).value = document.getElementById( "OSID_PLC_TBACK_LOAD_label" ).innerHTML = response.OSID_PLC_TBACK_LOAD;
 		document.getElementById( "OSID_PLC_HEALTH_progress" ).value = document.getElementById( "OSID_PLC_HEALTH_label" ).innerHTML = response.OSID_PLC_HEALTH;
+		document.getElementById( "OSID_SYSTEM_BACK_LOAD_progress" ).value = document.getElementById( "OSID_SYSTEM_BACK_LOAD_label" ).innerHTML = response.OSID_SYSTEM_BACK_LOAD;
 		
 		if ( response.OSID_PLC_MALLOC_USE > 70 ) {
 			document.getElementById( "OSID_PLC_MALLOC_USE_progress" ).classList.remove("is-success");
@@ -81,9 +82,17 @@ export function index_page() {
 			document.getElementById( "OSID_PLC_HEALTH_progress" ).classList.add("is-success");
 		}
 
+		if ( response.OSID_SYSTEM_BACK_LOAD > 70 ) {
+			document.getElementById( "OSID_SYSTEM_BACK_LOAD_progress" ).classList.remove("is-success");
+			document.getElementById( "OSID_SYSTEM_BACK_LOAD_progress" ).classList.add("is-danger");
+		} else {
+			document.getElementById( "OSID_SYSTEM_BACK_LOAD_progress" ).classList.remove("is-danger");
+			document.getElementById( "OSID_SYSTEM_BACK_LOAD_progress" ).classList.add("is-success");
+		}
+	
 		// PLC Informations.
 
-		document.getElementById( "OSID_XTARGET_ID" ).innerHTML = response.OSID_XTARGET_ID;
+		document.getElementById( "OSID_TARGET_ID" ).innerHTML = response.OSID_TARGET_ID;
 		document.getElementById( "OSID_MANUFACT_CODE" ).innerHTML = response.OSID_MANUFACT_CODE;
 		document.getElementById( "OSID_CUSTOMER_CODE" ).innerHTML = response.OSID_CUSTOMER_CODE;
 		document.getElementById( "OSID_PLC_PROGRAM_VER" ).innerHTML = response.OSID_PLC_PROGRAM_VER;

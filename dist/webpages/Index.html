@@ -181,7 +181,7 @@
 					</div>
 					<div class="tile is-child box is-shadowless has-background-white">
 						<p class="subtitle is-spaced has-text-weight-bold">PLC informations</p>
-						<p>Targhet ID: <span id="OSID_XTARGET_ID" class="has-text-weight-bold">-</span></p>
+						<p>Target ID: <span id="OSID_TARGET_ID" class="has-text-weight-bold">-</span></p>
 						<p>Manufacturer code: <span id="OSID_MANUFACT_CODE" class="has-text-weight-bold">-</span></p>
 						<p>Customer code: <span id="OSID_CUSTOMER_CODE" class="has-text-weight-bold">-</span></p>
 						<p>Program: <span id="OSID_PLC_PROGRAM_VER" class="has-text-weight-bold">-</span></p>
@@ -191,15 +191,15 @@
 					<div class="tile is-child box is-shadowless">
 						<div class="columns">
 							<div class="column">
-								<p class="subtitle is-spaced has-text-weight-bold">Stats</p>
+								<p class="subtitle is-spaced has-text-weight-bold">System Stats</p>
 							</div>
 						</div>
 						<div class="columns">
 							<div class="column is-one-third">
-								PMAlloc use: <span id="OSID_PLC_MALLOC_USE_label" class="has-text-weight-bold"> - </span>%
+								System load: <span id="OSID_SYSTEM_BACK_LOAD_label" class="has-text-weight-bold"> - </span>%
 							</div>
 							<div class="column">
-								<progress id="OSID_PLC_MALLOC_USE_progress" class="progress is-medium is-success" max="100"></progress>
+								<progress id="OSID_SYSTEM_BACK_LOAD_progress" class="progress is-medium is-success" max="100"></progress>
 							</div>
 						</div>
 						<div class="columns">
@@ -208,6 +208,19 @@
 							</div>
 							<div class="column">
 								<progress id="OSID_SYSTEM_RMALLOC_USE_progress" class="progress is-medium is-success" max="100"></progress>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column">
+								<p class="subtitle is-spaced has-text-weight-bold">PLC Stats</p>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column is-one-third">
+								MAlloc use: <span id="OSID_PLC_MALLOC_USE_label" class="has-text-weight-bold"> - </span>%
+							</div>
+							<div class="column">
+								<progress id="OSID_PLC_MALLOC_USE_progress" class="progress is-medium is-success" max="100"></progress>
 							</div>
 						</div>
 						<div class="columns">
