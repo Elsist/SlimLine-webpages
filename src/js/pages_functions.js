@@ -222,13 +222,16 @@ export function device_page() {
 		document.getElementById( "OSID_COM2_PARITY_view" ).innerHTML = response.OSID_COM2_PARITY;
 		document.getElementById( "OSID_COM2_DATA_BITS_view" ).innerHTML = response.OSID_COM2_DATA_BITS;
 		document.getElementById( "OSID_COM2_STOP_BITS_view" ).innerHTML = response.OSID_COM2_STOP_BITS;
-		document.getElementById( "OSID_ETH0_ACT_IP_view" ).innerHTML = response.OSID_ETH0_ACT_IP;
+		document.getElementById( "OSID_ETH0_ACT_IP" ).innerHTML = response.OSID_ETH0_ACT_IP;
+		document.getElementById( "OSID_ETH0_ACT_MASK" ).innerHTML = response.OSID_ETH0_ACT_MASK;
 		document.getElementById( "OSID_ETH0_MAC" ).innerHTML = response.OSID_ETH0_MAC;
-		document.getElementById( "OSID_ETH0_ACT_GATEWAY_view" ).innerHTML = response.OSID_ETH0_ACT_GATEWAY;
-		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY_view" ).innerHTML = response.OSID_ETH0_ACT_DNS_PRIMARY;
-		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY_view" ).innerHTML = response.OSID_ETH0_ACT_DNS_SECONDARY;
+		document.getElementById( "OSID_ETH0_ACT_GATEWAY" ).innerHTML = response.OSID_ETH0_ACT_GATEWAY;
+		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY" ).innerHTML = response.OSID_ETH0_ACT_DNS_PRIMARY;
+		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY" ).innerHTML = response.OSID_ETH0_ACT_DNS_SECONDARY;
 	
 		// Display value in input.
+
+		// Attenzione ! pagina con valori doppi, IP, MASK, GATEWAY, DNS 1, DNS 2. hanno una variabile il lettura con ACT e una senza per i settaggi.
 
 		document.getElementById( "OSID_COM0_BAUD_input" ).value = response.OSID_COM0_BAUD;
 		document.getElementById( "OSID_COM0_PARITY_input" ).value = response.OSID_COM0_PARITY;
@@ -251,13 +254,13 @@ export function device_page() {
 		document.getElementById( "OSID_COM2_DTR_MNG_input" ).value = response.OSID_COM2_DTR_MNG;
 		document.getElementById( "OSID_COM2_DTR_ON_TIME_input" ).value = response.OSID_COM2_DTR_ON_TIME;
 		document.getElementById( "OSID_COM2_DTR_OFF_TIME_input" ).value = response.OSID_COM2_DTR_OFF_TIME;
-		document.getElementById( "OSID_ETH0_ACT_IP_input" ).value = response.OSID_ETH0_ACT_IP;
+		document.getElementById( "OSID_ETH0_IP" ).value = response.OSID_ETH0_IP;
 		document.getElementById( "OSID_ETH0_DHCP_EN_input" ).value = response.OSID_ETH0_DHCP_EN;
-		document.getElementById( "OSID_ETH0_ACT_MASK_input" ).value = response.OSID_ETH0_ACT_MASK;
-		document.getElementById( "OSID_ETH0_ACT_GATEWAY_input" ).value = response.OSID_ETH0_ACT_GATEWAY;
+		document.getElementById( "OSID_ETH0_MASK" ).value = response.OSID_ETH0_MASK;
+		document.getElementById( "OSID_ETH0_GATEWAY" ).value = response.OSID_ETH0_GATEWAY;
 		document.getElementById( "OSID_ETH0_DHCP_DNS_input" ).value = response.OSID_ETH0_DHCP_DNS;
-		document.getElementById( "OSID_ETH0_ACT_DNS_PRIMARY_input" ).value = response.OSID_ETH0_ACT_DNS_PRIMARY;
-		document.getElementById( "OSID_ETH0_ACT_DNS_SECONDARY_input" ).value = response.OSID_ETH0_ACT_DNS_SECONDARY;
+		document.getElementById( "OSID_ETH0_DNS_PRIMARY" ).value = response.OSID_ETH0_DNS_PRIMARY;
+		document.getElementById( "OSID_ETH0_DNS_SECONDARY" ).value = response.OSID_ETH0_DNS_SECONDARY;
 
 	}
 }
@@ -465,22 +468,22 @@ export function protocols_page() {
 
 		// Display value in view.
 	
-		document.getElementById( "OSID_MODBUS_SVR0_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR0_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR0_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR0_NODE;
 		document.getElementById( "OSID_MODBUS_SVR0_TYPE_view" ).innerHTML = modbus_type( response.OSID_MODBUS_SVR0_TYPE );
 		document.getElementById( "OSID_MODBUS_SVR0_DEVICE_view" ).innerHTML = modbus_device( response.OSID_MODBUS_SVR0_DEVICE );
-		document.getElementById( "OSID_MODBUS_SVR1_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR1_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR1_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR1_NODE;
 		document.getElementById( "OSID_MODBUS_SVR1_TYPE_view" ).innerHTML = modbus_type( response.OSID_MODBUS_SVR1_TYPE );
 		document.getElementById( "OSID_MODBUS_SVR1_DEVICE_view" ).innerHTML = modbus_device( response.OSID_MODBUS_SVR1_DEVICE );
-		document.getElementById( "OSID_MODBUS_SVR2_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR2_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR2_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR2_NODE;
 		document.getElementById( "OSID_MODBUS_SVR2_TYPE_view" ).innerHTML = modbus_type( response.OSID_MODBUS_SVR2_TYPE );
 		document.getElementById( "OSID_MODBUS_SVR2_DEVICE_view" ).innerHTML = modbus_device( response.OSID_MODBUS_SVR2_DEVICE );
-		document.getElementById( "OSID_MODBUS_SVR3_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR3_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR3_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR3_NODE;
 		document.getElementById( "OSID_MODBUS_SVR3_TYPE_view" ).innerHTML = modbus_type( response.OSID_MODBUS_SVR3_TYPE );
 		document.getElementById( "OSID_MODBUS_SVR3_DEVICE_view" ).innerHTML = modbus_device( response.OSID_MODBUS_SVR3_DEVICE );
-		document.getElementById( "OSID_MODBUS_SVR4_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR4_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR4_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR4_NODE;
 		document.getElementById( "OSID_MODBUS_SVR4_TYPE_view" ).innerHTML = modbus_type( response.OSID_MODBUS_SVR4_TYPE );
 		document.getElementById( "OSID_MODBUS_SVR4_DEVICE_view" ).innerHTML = modbus_device( response.OSID_MODBUS_SVR4_DEVICE );
-		document.getElementById( "OSID_MODBUS_SVR5_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR5_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR5_NODE_view" ).innerHTML = response.OSID_MODBUS_SVR5_NODE;
 		document.getElementById( "OSID_MODBUS_SVR5_TYPE_view" ).innerHTML = modbus_type( response.OSID_MODBUS_SVR5_TYPE );
 		document.getElementById( "OSID_MODBUS_SVR5_DEVICE_view" ).innerHTML = modbus_device( response.OSID_MODBUS_SVR5_DEVICE );
 
@@ -537,27 +540,27 @@ export function protocols_page() {
 		// Display value in inputs.
 
 		document.getElementById("OSID_MODBUS_SVR0_EN_input").value = response.OSID_MODBUS_SVR0_EN;
-		document.getElementById( "OSID_MODBUS_SVR0_NODE_input" ).value = response.OSID_MODBUS_SVR0_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR0_NODE_input" ).value = response.OSID_MODBUS_SVR0_NODE;
 		document.getElementById( "OSID_MODBUS_SVR0_TYPE_input" ).value = response.OSID_MODBUS_SVR0_TYPE;
 		document.getElementById( "OSID_MODBUS_SVR0_DEVICE_input" ).value = response.OSID_MODBUS_SVR0_DEVICE;
 		document.getElementById("OSID_MODBUS_SVR1_EN_input").value = response.OSID_MODBUS_SVR1_EN;
-		document.getElementById( "OSID_MODBUS_SVR1_NODE_input" ).value = response.OSID_MODBUS_SVR1_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR1_NODE_input" ).value = response.OSID_MODBUS_SVR1_NODE;
 		document.getElementById( "OSID_MODBUS_SVR1_TYPE_input" ).value = response.OSID_MODBUS_SVR1_TYPE;
 		document.getElementById( "OSID_MODBUS_SVR1_DEVICE_input" ).value = response.OSID_MODBUS_SVR1_DEVICE;
 		document.getElementById("OSID_MODBUS_SVR2_EN_input").value = response.OSID_MODBUS_SVR2_EN;
-		document.getElementById( "OSID_MODBUS_SVR2_NODE_input" ).value = response.OSID_MODBUS_SVR2_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR2_NODE_input" ).value = response.OSID_MODBUS_SVR2_NODE;
 		document.getElementById( "OSID_MODBUS_SVR2_TYPE_input" ).value = response.OSID_MODBUS_SVR2_TYPE;
 		document.getElementById( "OSID_MODBUS_SVR2_DEVICE_input" ).value = response.OSID_MODBUS_SVR2_DEVICE;
 		document.getElementById("OSID_MODBUS_SVR3_EN_input").value = response.OSID_MODBUS_SVR3_EN;
-		document.getElementById( "OSID_MODBUS_SVR3_NODE_input" ).value = response.OSID_MODBUS_SVR3_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR3_NODE_input" ).value = response.OSID_MODBUS_SVR3_NODE;
 		document.getElementById( "OSID_MODBUS_SVR3_TYPE_input" ).value = response.OSID_MODBUS_SVR3_TYPE;
 		document.getElementById( "OSID_MODBUS_SVR3_DEVICE_input" ).value = response.OSID_MODBUS_SVR3_DEVICE;
 		document.getElementById("OSID_MODBUS_SVR4_EN_input").value = response.OSID_MODBUS_SVR4_EN;
-		document.getElementById( "OSID_MODBUS_SVR4_NODE_input" ).value = response.OSID_MODBUS_SVR4_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR4_NODE_input" ).value = response.OSID_MODBUS_SVR4_NODE;
 		document.getElementById( "OSID_MODBUS_SVR4_TYPE_input" ).value = response.OSID_MODBUS_SVR4_TYPE;
 		document.getElementById( "OSID_MODBUS_SVR4_DEVICE_input" ).value = response.OSID_MODBUS_SVR4_DEVICE;
 		document.getElementById("OSID_MODBUS_SVR5_EN_input").value = response.OSID_MODBUS_SVR5_EN;
-		document.getElementById( "OSID_MODBUS_SVR5_NODE_input" ).value = response.OSID_MODBUS_SVR5_TYPE;
+		document.getElementById( "OSID_MODBUS_SVR5_NODE_input" ).value = response.OSID_MODBUS_SVR5_NODE;
 		document.getElementById( "OSID_MODBUS_SVR5_TYPE_input" ).value = response.OSID_MODBUS_SVR5_TYPE;
 		document.getElementById( "OSID_MODBUS_SVR5_DEVICE_input" ).value = response.OSID_MODBUS_SVR5_DEVICE;
 	}
