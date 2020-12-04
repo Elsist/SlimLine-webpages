@@ -168,3 +168,7 @@ L'invio del form deve essere disabilitato dal'HTML.
 - **display_value** funzione di callback dopo read_data e set_data. In questa funzione c'è scritto come valorizzare i campi della pagina con i dati ricevuti.
 
 	read_data( data_page, on_loop, display_value );
+
+	## Note
+
+	Su tutti i campi data e ora il browser legge UTC ma li converte in data e ora **locale** in base alle impostazioni correnti dello stesso.
