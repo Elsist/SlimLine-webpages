@@ -172,3 +172,11 @@ L'invio del form deve essere disabilitato dal'HTML.
 	## Note
 
 	Su tutti i campi data e ora il browser legge UTC ma li converte in data e ora **locale** in base alle impostazioni correnti dello stesso.
+
+	### Datetime settings
+
+	Se voglio impostare una data e ora **4/12/2020 20:10:23** sul PLC viene inviato il valore UTC corrispondente **4/12/2020 19:10:23** perchè il browser lo stiamo utilizzando in italia quindi siamo **+1**.
+
+	Questo valore sul PLC da telnet con il comando **datetime** se il PLC è impostato anche esso a **GMT +1** su timezone come lo è il browser allora con avremo come risultato del comando la stessa data e ora visualizzate dal browser.
+
+	Ma se il PLC è impostato a **GMT +2** allora il PLC visualizzerà un ora più avanti rispetto a quella del browser.
