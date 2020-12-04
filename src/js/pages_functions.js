@@ -100,7 +100,7 @@ export function index_page() {
 		// System Informations.
 
 		document.getElementById( "OSID_DEVICE_NAME" ).innerHTML = response.OSID_DEVICE_NAME;
-		document.getElementById( "OSID_LOCAL_DATETIME" ).innerHTML = jsdate_to_readable( response.OSID_LOCAL_DATETIME );
+		document.getElementById( "OSID_UTC_DATETIME" ).innerHTML = jsdate_to_readable( response.OSID_UTC_DATETIME );
 		document.getElementById( "OSID_PRODUCT_CODE" ).innerHTML = response.OSID_PRODUCT_CODE;
 		document.getElementById( "OSID_PRODUCT_SERIAL" ).innerHTML = response.OSID_PRODUCT_SERIAL;
 		document.getElementById( "OSID_UNIQUE_ID" ).innerHTML = response.OSID_UNIQUE_ID;
@@ -144,7 +144,7 @@ export function general_page() {
 		document.getElementById( "OSID_DAYLIGHT_ZONE_view" ).innerHTML = response.OSID_DAYLIGHT_ZONE;
 
 		// Il plc torna secondi e devo convertirli in un data leggibili.
-		document.getElementById( "OSID_LOCAL_DATETIME_view" ).innerHTML = jsdate_to_readable( response.OSID_LOCAL_DATETIME );
+		document.getElementById( "OSID_UTC_DATETIME_view" ).innerHTML = jsdate_to_readable( response.OSID_UTC_DATETIME );
 
 		// System settings.
 
@@ -166,7 +166,7 @@ export function general_page() {
 
 		// Il plc torna secondi e devo convertirli in RFC3339 per il valore html5 dell'input.
 		
-		document.getElementById( "OSID_LOCAL_DATETIME_input" ).value = jsdate_to_rfc3339( new Date( response.OSID_LOCAL_DATETIME * 1000 ) );
+		document.getElementById( "OSID_UTC_DATETIME_input" ).value = jsdate_to_rfc3339( new Date( response.OSID_UTC_DATETIME * 1000 ) );
 
 		// System settings.
 

@@ -113,7 +113,13 @@ export function send_data( form_element, data_page, fct ) {
 
 		// Se sull'input ho segnato data-plcforma="epoch" allora converto la data in epoch.
 		else if ( form_element.elements[i].dataset.plcformat == "epoch" ) {
-			data[form_element.elements[i].name] = Date.parse( form_element.elements[i].value ) / 1000;
+			
+			//var date = new Date( form_element.elements[i].value );
+			//var now_utc =  Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+			//data[form_element.elements[i].name] = now_utc / 1000;
+			
+			data[form_element.elements[i].name] =  ( Date.parse( form_element.elements[i].value ) / 1000 );
+
 		}
     	else data[form_element.elements[i].name] = form_element.elements[i].value;
     }
