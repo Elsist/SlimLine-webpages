@@ -144,7 +144,7 @@
 					<div class="column">
 						TIME ZONE: <span id="OSID_TIME_ZONE_view" class="has-text-weight-semibold">-</span>,
 						DAYLIGHT ZONE: <span id="OSID_DAYLIGHT_ZONE_view" class="has-text-weight-semibold">-</span>,
-						DATE - TIME: <span id="OSID_LOCAL_DATETIME_view" class="has-text-weight-semibold">-</span>
+						DATE - TIME: <span id="OSID_UTC_DATETIME_view" class="has-text-weight-semibold">-</span>
 					</div>
 					<div class="column has-text-right-tablet">
 						<a data-toggle="modal" data-target="modal-DATETIME"><ion-icon name="settings-outline" size="large" class="has-text-grey-dark"></ion-icon></a>
@@ -245,12 +245,12 @@
 								<!-- start field -->
 								<div class="field is-horizontal">
 									<div class="field-label is-normal">
-										<label class="label has-text-weight-semibold is-size-7">Date time</label>
+										<label class="label has-text-weight-semibold is-size-7">PC Date time</label>
 									</div>
 									<div class="field-body">
 										<div class="field">
 											<div class="control">
-												<input type="datetime-local" step="1" id="OSID_LOCAL_DATETIME_input" data-plcformat="epoch" name="OSID_LOCAL_DATETIME" class="input"
+												<input type="datetime-local" step="1" id="OSID_UTC_DATETIME_input" data-plcformat="epoch" name="OSID_UTC_DATETIME" class="input"
 													type="text" placeholder="Type value here">
 											</div>
 										</div>
