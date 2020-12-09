@@ -31,10 +31,13 @@
 
 	}
 
-	//Progress bars.
-
+	// Progress bars of health, background red and value green.
+	// disabled because not work on firefox.
+	/*
+	progress#OSID_PLC_HEALTH_progress[value] { background: $red; }
 	progress#OSID_PLC_HEALTH_progress[value]::-moz-progress-bar { background: $red; }
 	progress#OSID_PLC_HEALTH_progress[value]::-webkit-progress-bar { background: $red; }
+	*/
 
 }
 
