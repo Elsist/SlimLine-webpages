@@ -51,6 +51,10 @@
 					<a href="UserInfos.html" class="navbar-item"> UserInfos </a>
 					<a href="IOStatus.html" class="navbar-item"> IO Status </a>
 					<a href="Logs.html" class="navbar-item"> Logs </a>
+					<form action="/SysCgi/Login.cgi" method="post" name="login" id="logout-form-mobile">
+						<input type="hidden" name="Action" value="Logout">
+						<a class="navbar-item" href="javascript:{}" onclick="document.getElementById('logout-form-mobile').submit();"> Logout </a>
+					</form>
 				</div>
 				<!-- start navbar user desktop-->
 				<div class="navbar-end is-hidden-touch">

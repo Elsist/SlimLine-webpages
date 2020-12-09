@@ -51,6 +51,10 @@
 					<a href="UserInfos.html" class="navbar-item"> UserInfos </a>
 					<a href="IOStatus.html" class="navbar-item"> IO Status </a>
 					<a href="Logs.html" class="navbar-item"> Logs </a>
+					<form action="/SysCgi/Login.cgi" method="post" name="login" id="logout-form-mobile">
+						<input type="hidden" name="Action" value="Logout">
+						<a class="navbar-item" href="javascript:{}" onclick="document.getElementById('logout-form-mobile').submit();"> Logout </a>
+					</form>
 				</div>
 				<!-- start navbar user desktop-->
 				<div class="navbar-end is-hidden-touch">
@@ -174,7 +178,7 @@
 				</div>
 			</div>
 			<!-- end web settings -->
-			<!-- start ftp settings -->
+			<!-- start MODBUS2 settings -->
 			<div class="box is-shadowless has-background-white">
 				<div class="columns is-vcentered">
 					<div class="column is-one-fifth has-text-weight-bold">
@@ -193,8 +197,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- end ftp settings -->
-			<!-- start ipserver0 settings -->
+			<!-- end MODBUS2 settings -->
+			<!-- start MODBUS3 settings -->
 			<div class="box is-shadowless has-background-white">
 				<div class="columns is-vcentered">
 					<div class="column is-one-fifth has-text-weight-bold">
@@ -213,8 +217,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- end ipserver0 settings -->
-			<!-- start ipserver1 settings -->
+			<!-- end MODBUS3 settings -->
+			<!-- start MODBUS4 settings -->
 			<div class="box is-shadowless has-background-white">
 				<div class="columns is-vcentered">
 					<div class="column is-one-fifth has-text-weight-bold">
@@ -233,8 +237,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- end ipserver1 settings -->
-			<!-- start ipserver2 settings -->
+			<!-- end MODBUS4 settings -->
+			<!-- start MODBUS5 settings -->
 			<div class="box is-shadowless has-background-white">
 				<div class="columns is-vcentered">
 					<div class="column is-one-fifth has-text-weight-bold">
@@ -253,7 +257,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- end ipserver2 settings -->
+			<!-- end MODBUS5 settings -->
 			<!-- start modals -->
 			<!-- modal MODBUS0 start -->
 			<div class="modal" id="modal-MODBUS0">
