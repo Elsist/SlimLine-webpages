@@ -22,6 +22,7 @@ export function index_page() {
 		// First widgets.
 
 		document.getElementById( "OSID_SYSTEM_UP_TIME" ).innerHTML = seconds_to_dhms( response.OSID_SYSTEM_UP_TIME );
+		document.getElementById( "OSID_PLC_UP_TIME" ).innerHTML = seconds_to_dhms( response.OSID_PLC_UP_TIME );
 		document.getElementById( "OSID_PLC_STATUS" ).innerHTML = ( ( response.OSID_PLC_STATUS == 1 ) ? 'Running' : 'Stopped');
 
 		// Stats.
