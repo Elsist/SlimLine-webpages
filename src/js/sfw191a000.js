@@ -308,7 +308,7 @@ export function seconds_to_dhms( seconds ) {
 	var hDisplay = h.toString();
 	var mDisplay = m.toString();
 	var sDisplay = s.toString();
-	return dDisplay + '-' + hDisplay.padStart(2, '0') + ':' + mDisplay.padStart(2, '0') + ':' + sDisplay.padStart(2, '0');
+	return dDisplay + 'd ' + hDisplay.padStart(2, '0') + ':' + mDisplay.padStart(2, '0') + ':' + sDisplay.padStart(2, '0');
 }
 
 /**

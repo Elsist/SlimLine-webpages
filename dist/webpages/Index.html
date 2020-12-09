@@ -51,6 +51,10 @@
 					<a href="UserInfos.html" class="navbar-item"> UserInfos </a>
 					<a href="IOStatus.html" class="navbar-item"> IO Status </a>
 					<a href="Logs.html" class="navbar-item"> Logs </a>
+					<form action="/SysCgi/Login.cgi" method="post" name="login" id="logout-form-mobile">
+						<input type="hidden" name="Action" value="Logout">
+						<a class="navbar-item" href="javascript:{}" onclick="document.getElementById('logout-form-mobile').submit();"> Logout </a>
+					</form>
 				</div>
 				<!-- start navbar user desktop-->
 				<div class="navbar-end is-hidden-touch">
@@ -141,12 +145,13 @@
 							<div class="level">
 								<div class="level-item">
 									<div>
-										<p class="subtitle is-spaced">System up time <span class="is-size-7">(d-h:m:s)</span></p>
+										<p class="subtitle is-spaced">System up time</p>
 										<p class="title" id="OSID_SYSTEM_UP_TIME">-</p>
 									</div>
 								</div>
 								<div class="level-item">
-									<svg xmlns="http://www.w3.org/2000/svg" class='ionicon pr-4 has-text-primary' style="height:40px;" viewBox="0 0 512 512"><title>Flash</title><path d="M315.27 33L96 304h128l-31.51 173.23a2.36 2.36 0 002.33 2.77h0a2.36 2.36 0 001.89-.95L416 208H288l31.66-173.25a2.45 2.45 0 00-2.44-2.75h0a2.42 2.42 0 00-1.95 1z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>								</div>
+									<svg xmlns="http://www.w3.org/2000/svg" class='ionicon pr-4 has-text-primary' style="height:40px;" viewBox="0 0 512 512"><title>Flash</title><path d="M315.27 33L96 304h128l-31.51 173.23a2.36 2.36 0 002.33 2.77h0a2.36 2.36 0 001.89-.95L416 208H288l31.66-173.25a2.45 2.45 0 00-2.44-2.75h0a2.42 2.42 0 00-1.95 1z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+								</div>
 							</div>
 					</div>
 				</div>
@@ -155,8 +160,8 @@
 						<div class="level">
 							<div class="level-item">
 								<div>
-									<p class="subtitle is-spaced">PLC</p>
-									<p class="title" id="OSID_PLC_STATUS">-</p>
+									<p class="subtitle is-spaced">PLC <span id="OSID_PLC_STATUS">-</span></p>
+									<p class="title" id="OSID_PLC_UP_TIME">-</p>
 								</div>
 							</div>
 							<div class="level-item">
