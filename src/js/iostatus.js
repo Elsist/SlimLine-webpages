@@ -260,8 +260,10 @@ function system_update( status, response ) {
 		cards[ i ].code = element;
 		cards[ i ].do = response.OSID_PLC_DO_ALL[ index ];
 		cards[ i ].di = response.OSID_PLC_DI_ALL[ index ];
-		cards[ i ].address = "16#" + index.toString().padStart(2, 0);
-
+		
+		cards[ i ].address = index.toString().toUpperCase().padStart(2, 0); // Indirizzo in decimale.
+		//cards[ i ].address = "16#" + index.toString().toUpperCase().padStart(2, 0); // Indirizzo in decimale con 16#.
+		//cards[ i ].address = "16#" + index.toString(16).toUpperCase().padStart(2, 0); // Indirizzo in esadecimale.
 
 		// Controllo tipo scheda in tabella
 
@@ -281,6 +283,7 @@ function system_update( status, response ) {
 	// Sporto la CPU in prima posisione nell'array.
 
 	cards.splice(0, 0, cards.pop());
+	cards[ 0 ].address = "CPU";
 
 	// Disegno il sistema.
 
