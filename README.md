@@ -2,7 +2,7 @@
 
 [![Slimline Firmware](https://img.shields.io/badge/firmware-%3E%3Dsfw198d030-%23009933)](https://support.elsist.biz/note-di-rilascio-per-il-firmare-delle-cpu-swf198/)
 
-Queste sono le pagine web per i dispositivi SlimLine.
+Queste sono le pagine web per dispositivi SlimLine.
 All'interno del pacchetto sono contenuti tutti i file necessari allo sviluppo.
 
 ## Componenti richiesti
