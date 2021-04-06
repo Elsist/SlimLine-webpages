@@ -151,7 +151,7 @@ var card_ios =[	{Name:"MPS054****", Regex: "MPS054([A-Z0-9]{4})", Input:2, Outpu
 				{Name:"PCB126****", Regex: "PCB126([A-Z0-9]{4})", Input:0, Output:0},
 				{Name:"PCB129****", Regex: "PCB129([A-Z0-9]{4})", Input:16, Output:8},			 
 				{Name:"PCB137****", Regex: "PCB137([A-Z0-9]{4})", Input:2, Output:2},
-				{Name:"MPS141****", Regex: "MPS141([A-Z0-9]{4})", Input:6, Output:4},		 
+				{Name:"PCB141****", Regex: "PCB141([A-Z0-9]{4})", Input:6, Output:4},		 
 ];
 
 
