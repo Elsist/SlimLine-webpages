@@ -1,0 +1,21 @@
+{ 
+	"version": 1.0,
+	"remote_error_url": "https://support.elsist.biz/articoli/elenco-errori/?wdt_column_filter[error_id]=",
+	"cards": [
+		{"name":"MPS054****", "regex": "MPS054([A-Z0-9]{4})", "input":2, "output":2},
+		{"name":"MPS055****", "regex": "MPS055([A-Z0-9]{4})", "input":0, "output":0},
+		{"name":"MPS056****", "regex": "MPS056([A-Z0-9]{4})", "input":6, "output":4},
+		{"name":"PCB122****", "regex": "PCB122([A-Z0-9]{4})", "input":12, "output":8},
+		{"name":"PCB124*000", "regex": "PCB124([A-Z]{1})000", "input":16, "output":16},
+		{"name":"PCB124*100", "regex": "PCB124([A-Z]{1})100", "input":16, "output":16},
+		{"name":"PCB124*200", "regex": "PCB124([A-Z]{1})200", "input":16, "output":24},
+		{"name":"PCB124*300", "regex": "PCB124([A-Z]{1})300", "input":24, "output":8},
+		{"name":"PCB124*400", "regex": "PCB124([A-Z]{1})400", "input":32, "output":8},
+		{"name":"PCB124*500", "regex": "PCB124([A-Z]{1})500", "input":24, "output":24},
+		{"name":"PCB124*600", "regex": "PCB124([A-Z]{1})600", "input":32, "output":16},
+		{"name":"PCB126****", "regex": "PCB126([A-Z0-9]{4})", "input":0, "output":0},
+		{"name":"PCB129****", "regex": "PCB129([A-Z0-9]{4})", "input":16, "output":8},			 
+		{"name":"PCB137****", "regex": "PCB137([A-Z0-9]{4})", "input":2, "output":2},
+		{"name":"PCB141****", "regex": "PCB141([A-Z0-9]{4})", "input":6, "output":4}
+	]
+}
