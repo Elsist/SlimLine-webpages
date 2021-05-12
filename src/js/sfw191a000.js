@@ -23,6 +23,7 @@ console.log("%c Welcome to SlimLine webpages ! ","color: #303030; font-family:mo
 // Inizializzazione variabili.
 
 export var data_page = window.location.pathname.split('/')[2].split(".")[0] + '.htm';
+var variables_file_local = 'variables.json';
 var fct_address; // Funzione da eseguire per valorizzazione elementi DOM.
 var semaforo; // Variabile semaforica.
 
@@ -406,4 +407,22 @@ export function milliseconds_to_hhmmss( ms ) {
 	var hrs = (s - mins) / 60;
   
 	return hrs + ':' + mins + ':' + secs + '.' + ms;
+}
+
+/**
+ * Funzione read_variables_file()
+ */
+export async function read_variables_file( key ) {
+	let url = '../' + variables_file_local;
+	return fetch(url)
+	.then(res => res.json())
+	.then((out) => {
+		if ( out.hasOwnProperty( key ) ) {
+			return out[key];
+		}
+		else return false;
+	})
+	.catch(err => { 
+		return false;
+	});
 }
