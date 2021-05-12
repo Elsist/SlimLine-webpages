@@ -50,7 +50,7 @@ var cards_draw = [];
 
 // Array con oggetti grafici sistema in stop
 
-var stop_draw = null;
+var stop_draw = false;
 
 /**
 * Dichiarazione stili grafici e di layout
@@ -245,17 +245,20 @@ function waiting_windows(){
 
 	if ( cards_draw.lenght == 0 ) return;
 	
-	svg.innerHTML = '';
+	svg.innerHTML = ''; // Cancello tutto da SVG
+	stop_draw = true; // Segno che sono ho isegnato scritta di stop
 	cards_draw = []; // Svuoto array
 
 	// Disegno informazioni di sistema stoppato
 
-	var card_address = document.createElementNS(svgns, "text");
-	card_address.setAttribute("x", 0);
-	card_address.setAttribute("y", 0 );
-	card_address.setAttribute("style", 'font-size: 16px; font-weight: bold;');
-	card_address.textContent = 'SYSTEM IS NOT RUNNING';
-	svg.appendChild(card_address);
+	var waiting_text = document.createElementNS(svgns, "text");
+	waiting_text.setAttribute("x", 10);
+	waiting_text.setAttribute("y", 10 );
+	waiting_text.setAttribute("dominant-baseline", "hanging");
+	waiting_text.setAttribute("text-anchor", 'start');
+	waiting_text.setAttribute("style", 'font-size: 16px; font-weight: bold;');
+	waiting_text.textContent = 'SYSTEM IS NOT RUNNING';
+	svg.appendChild(waiting_text);
 	
 }
 
@@ -311,9 +314,9 @@ function draw_card( card_obj ) {
 
 	// Rimuovo grafiche di stato in stop
 
-	if ( stop_draw != null ){
-		stop_draw.destroy();
-		stop_draw = null;
+	if ( stop_draw == true ){
+		svg.innerHTML = ''; // Cancello tutto da SVG e riparto da 0
+		stop_draw = false;
 	}
 
 	// Calcolo dimensioni e spazi

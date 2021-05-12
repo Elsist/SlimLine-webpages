@@ -211,15 +211,15 @@ function check_print_logs( readystate, status, response ){
 				break;
 			case 1:
 				log_class = 'has-text-danger logs-danger';
-				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Close</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="M368 368L144 144M368 144L144 368"/></svg>';
+				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Error</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="M368 368L144 144M368 144L144 368"/></svg>';
 				break;
 			case 2:
 				log_class = 'has-text-success logs-success';
-				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Flag</title><path d="M80 464V68.14a8 8 0 014-6.9C91.81 56.66 112.92 48 160 48c64 0 145 48 192 48a199.53 199.53 0 0077.23-15.77 2 2 0 012.77 1.85v219.36a4 4 0 01-2.39 3.65C421.37 308.7 392.33 320 352 320c-48 0-128-32-192-32s-80 16-80 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="50"/></svg>';
+				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Log</title><path d="M80 464V68.14a8 8 0 014-6.9C91.81 56.66 112.92 48 160 48c64 0 145 48 192 48a199.53 199.53 0 0077.23-15.77 2 2 0 012.77 1.85v219.36a4 4 0 01-2.39 3.65C421.37 308.7 392.33 320 352 320c-48 0-128-32-192-32s-80 16-80 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="50"/></svg>';
 				break;
 			default:
 				log_class = 'has-text-dark';
-				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Warning</title><path d="M85.57 446.25h340.86a32 32 0 0028.17-47.17L284.18 82.58c-12.09-22.44-44.27-22.44-56.36 0L57.4 399.08a32 32 0 0028.17 47.17z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"/><path d="M250.26 195.39l5.74 122 5.73-121.95a5.74 5.74 0 00-5.79-6h0a5.74 5.74 0 00-5.68 5.95z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"/><path d="M256 397.25a20 20 0 1120-20 20 20 0 01-20 20z" fill="currentColor"/></svg>';
+				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Log</title><path d="M80 464V68.14a8 8 0 014-6.9C91.81 56.66 112.92 48 160 48c64 0 145 48 192 48a199.53 199.53 0 0077.23-15.77 2 2 0 012.77 1.85v219.36a4 4 0 01-2.39 3.65C421.37 308.7 392.33 320 352 320c-48 0-128-32-192-32s-80 16-80 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="50"/></svg>';
 		}
 
 		// Pulizia log vecchi.
