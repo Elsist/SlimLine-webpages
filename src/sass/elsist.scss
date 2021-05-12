@@ -16,17 +16,14 @@
 
 		// Aggiungo spaziatura a sinistra e icona da css, fatto da css per far in modo che clipboardjs non copi le icone e abbiano tutte lo stesso spazio.
 
-		span::before{
+		span::before {
 			margin-right: 5px;
 		}
-		.has-text-success::before{
-			content: "\2691 ";
-		}
-		.has-text-warning::before{
-			content: "\26A0 ";
-		}
-		.has-text-danger::before{
-			content: "\2716 ";
+
+		// Centrare icone svg in verticale
+
+		svg {
+			vertical-align:middle;
 		}
 
 	}
