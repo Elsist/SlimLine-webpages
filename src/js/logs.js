@@ -8,7 +8,7 @@
  * Importazioni
  */
 
-import { try_json, jsdate_to_logsdate } from './sfw191a000';
+import { read_variables_file, try_json, jsdate_to_logsdate } from './sfw191a000';
 import { menu_active, nav_burger } from './utils';
 import notie from '../../node_modules/notie';
 import ClipBoard from 'clipboard';
@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', nav_burger() );
 
 var clipboard = new ClipBoard('.copy-button');
 clipboard.on('success', function(e) { e.clearSelection(); });
+
+// Variabile url sito remoto.
+
+var remote_error_url;
 
 /**
  * Dichiarazione variabili per l'app
@@ -41,12 +45,31 @@ var clear_button = document.getElementById("clear-button");
 start_button.addEventListener('click', function(){ loop(); } );
 clear_button.addEventListener('click', function(){ text_area.innerHTML = ''; } );
 
-/**
- * Inizio funzioni logs
- */
 
-read_logs();
-loop();
+/**
+* Inizio esecuzione
+*/
+start_page();
+
+/**
+* Funzione start_page( page_data )
+*/
+async function start_page() {
+
+	// Lettura variabili.
+
+	remote_error_url = await read_variables_file( 'remote_error_url' );
+
+	if ( remote_error_url == false ) {
+		notie.alert( { type: 'error', stay: true, text: 'Error in variables.json file !', position: 'top' } );
+		throw new Error("Error in variables.json file !");
+	}
+
+	// Start funzionamento.
+
+	read_logs();
+	loop();
+}
 
 
 /**
@@ -183,20 +206,20 @@ function check_print_logs( readystate, status, response ){
 		let log_icon;
 		switch ( element.Type ) {
 			case 0:
-				log_class = 'has-text-warning';
-				log_icon = '&#9888;';
+				log_class = 'has-text-warning logs-warning';
+				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Warning</title><path d="M85.57 446.25h340.86a32 32 0 0028.17-47.17L284.18 82.58c-12.09-22.44-44.27-22.44-56.36 0L57.4 399.08a32 32 0 0028.17 47.17z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"/><path d="M250.26 195.39l5.74 122 5.73-121.95a5.74 5.74 0 00-5.79-6h0a5.74 5.74 0 00-5.68 5.95z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"/><path d="M256 397.25a20 20 0 1120-20 20 20 0 01-20 20z" fill="currentColor"/></svg>';
 				break;
 			case 1:
-				log_class = 'has-text-danger';
-				log_icon = '&#10006;';
+				log_class = 'has-text-danger logs-danger';
+				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Close</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="M368 368L144 144M368 144L144 368"/></svg>';
 				break;
 			case 2:
-				log_class = 'has-text-success';
-				log_icon = '&#9873;';
+				log_class = 'has-text-success logs-success';
+				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Flag</title><path d="M80 464V68.14a8 8 0 014-6.9C91.81 56.66 112.92 48 160 48c64 0 145 48 192 48a199.53 199.53 0 0077.23-15.77 2 2 0 012.77 1.85v219.36a4 4 0 01-2.39 3.65C421.37 308.7 392.33 320 352 320c-48 0-128-32-192-32s-80 16-80 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="50"/></svg>';
 				break;
 			default:
 				log_class = 'has-text-dark';
-				log_icon = '&#9873;';
+				log_icon = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Warning</title><path d="M85.57 446.25h340.86a32 32 0 0028.17-47.17L284.18 82.58c-12.09-22.44-44.27-22.44-56.36 0L57.4 399.08a32 32 0 0028.17 47.17z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"/><path d="M250.26 195.39l5.74 122 5.73-121.95a5.74 5.74 0 00-5.79-6h0a5.74 5.74 0 00-5.68 5.95z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"/><path d="M256 397.25a20 20 0 1120-20 20 20 0 01-20 20z" fill="currentColor"/></svg>';
 		}
 
 		// Pulizia log vecchi.
@@ -207,12 +230,27 @@ function check_print_logs( readystate, status, response ){
 			}
 		}
 
+		// Controllo se ho uno user program error.
+
+		const regex_userprogramerror = /User program error:([0-9]+$)/g; // Espressione per capire se ho uno user program error.
+		const regex_geterrornumber = /[^User program error:]*$/g; // Espressione regolare per leggere il numero.
+
+		if ( element.Descr.match(regex_userprogramerror) ) {
+			var usererrornumber = element.Descr.match(regex_geterrornumber);
+			var svg = '<svg xmlns="http://www.w3.org/2000/svg" with="15" height="15" viewBox="0 0 512 512"><title>Open</title><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"/></svg>';
+			var error_url = ' <a href="' + remote_error_url + usererrornumber[0] + '" target="_blank">' + svg + '</a></span>';
+			var log_html  = '<span style="vertical-align:middle;" class="is-block ' + log_class + '">' + log_icon + ' ' + log_datetime + ' [' + element.Sfw + '][' + element.Code + '] ' + element.Descr + error_url + '</span>';
+		} else {
+			var log_html = '<span style="vertical-align:middle;" class="is-block ' + log_class + '">' + log_icon + ' ' + log_datetime + ' [' + element.Sfw + '][' + element.Code + '] ' + element.Descr + '</span>';
+		}
+
 		// Stampa logs
 
-		if ( text_area.scrollTop + text_area.offsetHeight >= text_area.scrollHeight ) {		
-			text_area.innerHTML += '<span class="is-block ' + log_class + '">' + log_datetime + ' [' + element.Sfw + '][' + element.Code + '] ' + element.Descr + '</span>';
+		if ( text_area.scrollTop + text_area.offsetHeight >= text_area.scrollHeight ) {
+			text_area.innerHTML += log_html;
 			text_area.scrollTop = text_area.scrollHeight;
-		} else text_area.innerHTML += '<span class="is-block ' + log_class + '">' + log_datetime + ' [' + element.Sfw + ' ][' + element.Code + '] ' + element.Descr + '</span>';
+		} else text_area.innerHTML += log_html;
+
 
 	});
 
