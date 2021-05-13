@@ -294,7 +294,7 @@ function update_card( card_obj ) {
 
 		// Calcolo stato
 
-		if ( (card_obj.di&Math.pow(2, i)) != 0 ) led.setAttribute("fill", led_on_color);
+		if ( (card_obj.do&Math.pow(2, i)) != 0 ) led.setAttribute("fill", led_on_color);
 		else led.setAttribute("fill", led_off_color );
 	}
 	
@@ -432,7 +432,7 @@ function draw_card( card_obj ) {
 		output_led.setAttribute("y", y);
 		output_led.setAttribute("width", ledsize);
 		output_led.setAttribute("height", ledsize);
-		if ( (card_obj.di&Math.pow(2, i)) != 0 ) output_led.setAttribute("fill", led_on_color);
+		if ( (card_obj.do&Math.pow(2, i)) != 0 ) output_led.setAttribute("fill", led_on_color);
 		else output_led.setAttribute("fill", led_off_color );
 		group.appendChild(output_led);
 
